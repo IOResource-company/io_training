@@ -1,13 +1,20 @@
 #!/usr/bin/env node
-// Daily training snippet emailer.
+// Daily training email.
+//
+// Curriculum:
+//   - Most days: ONE brand in focus (rotating through DATA.brands in order) —
+//     positioning, a slice of products/specs, verticals, talking points,
+//     objections and a 3-question quiz on that brand only.
+//   - Fridays: "general exam" — 8 questions across all brands + a scenario.
 //
 // Reads DATA straight out of IOR-Product-Training.html (single source of truth),
-// picks a date-seeded random mix of training content, renders a branded HTML
-// email and sends it via Resend.
+// renders a branded, dark-mode-resistant HTML email and sends it via Resend.
 //
 // Usage:
 //   RESEND_API_KEY=re_xxx node scripts/daily-snippet.mjs            # send
 //   node scripts/daily-snippet.mjs --dry-run                        # write out/preview.html, no send
+//   node scripts/daily-snippet.mjs --dry-run --force-exam           # preview the exam format
+//   node scripts/daily-snippet.mjs --dry-run --brand urovo          # preview a specific brand focus
 //
 // Env:
 //   RESEND_API_KEY   required unless --dry-run
@@ -24,6 +31,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const HTML_PATH = path.join(ROOT, 'IOR-Product-Training.html');
 const SITE_URL = process.env.SITE_URL || 'https://ioresource-company.github.io/io_training/';
 const DRY_RUN = process.argv.includes('--dry-run');
+const FORCE_EXAM = process.argv.includes('--force-exam');
+const FORCE_BRAND = (() => { const i = process.argv.indexOf('--brand'); return i > -1 ? process.argv[i + 1] : null; })();
 
 // ---------- extract DATA from the training app ----------
 
@@ -71,41 +80,41 @@ function pickN(arr, n) {
   return out;
 }
 
-// ---------- build the day's mix ----------
+// ---------- curriculum: which day is this? ----------
+
+// dayNum % 7: 0=Thu 1=Fri 2=Sat 3=Sun 4=Mon 5=Tue 6=Wed  (epoch was a Thursday)
+const isExamDay = FORCE_EXAM || (!FORCE_BRAND && dayNum % 7 === 1);
+
+// Brand rotation counts only study days (Fridays are exams and don't consume
+// a brand), so every brand gets equal airtime.
+const fridaysSoFar = Math.floor((dayNum - 1) / 7) + 1;
+const studyIndex = dayNum - fridaysSoFar;
 
 const DATA = extractData(fs.readFileSync(HTML_PATH, 'utf8'));
 const brands = DATA.brands;
 
-const spotlight = pick(brands);
-const talkingPoint = pick(spotlight.talkingPoints || []);
-const objection = pick(spotlight.objections || []);
+const focus = FORCE_BRAND
+  ? brands.find(b => b.slug === FORCE_BRAND) || brands[0]
+  : brands[studyIndex % brands.length];
 
-// global pools tagged with their brand
-const allQuiz = brands.flatMap(b => (b.quiz || []).map(q => ({ ...q, brand: b.name })));
-const allCards = brands.flatMap(b => (b.flashcards || []).map(c => ({ ...c, brand: b.name })));
-const allScenarios = brands.flatMap(b => (b.scenarios || []).map(s => ({ ...s, brand: b.name })));
-
-const quiz = pickN(allQuiz, 3);
-const useScenario = dayNum % 2 === 1; // alternate: scenario one day, flashcards the next
-const scenario = useScenario ? pick(allScenarios) : null;
-const cards = useScenario ? [] : pickN(allCards, 2);
-
-// ---------- render (inline styles only — email-client safe) ----------
+// ---------- render helpers (inline styles only — email-client safe) ----------
 
 const NAVY = '#09246B', BLUE = '#0073E6', TINT = '#E6F1FD', STEEL = '#5A6B7C', SILVER = '#D7DCE3', CLOUD = '#F4F6F9';
+const TEXT = '#1B2433';
 const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
 const letters = ['A', 'B', 'C', 'D'];
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+// Outlook inverts background-color but not background-image, so every
+// background is also painted with a single-colour linear-gradient.
+const bg = (c) => `background-color:${c};background-image:linear-gradient(${c},${c});`;
+
+// DATA positioning/talking-point strings carry light HTML (<p>, <strong>).
+// Emails can't style nested <p> reliably, so flatten paragraphs to <br><br>.
+const flattenHtml = (s) => String(s || '').replace(/<p>/g, '').replace(/<\/p>/g, '<br><br>').replace(/(<br><br>)+$/, '');
+
 const dateStr = today.toLocaleDateString('en-IE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 const shortDate = today.toLocaleDateString('en-IE', { day: 'numeric', month: 'short' });
-
-// Dark-mode defence: Outlook inverts background-color but not background-image,
-// so every background is also painted with a single-colour linear-gradient.
-// Classes (.card/.opt/.tint/.txt/.navy/...) exist so the <style> block can
-// re-assert original colours under Outlook dark mode ([data-ogsc]/[data-ogsb]).
-const bg = (c) => `background-color:${c};background-image:linear-gradient(${c},${c});`;
-const TEXT = '#1B2433';
 
 function card(title, inner, accent = BLUE) {
   return `<div class="card" style="${bg('#ffffff')}border:1px solid ${SILVER};border-left:4px solid ${accent};border-radius:8px;padding:18px 20px;margin:0 0 16px;">
@@ -116,47 +125,104 @@ function card(title, inner, accent = BLUE) {
 const optRow = (label, text) =>
   `<div class="opt txt" style="padding:6px 10px;margin:4px 0;${bg(CLOUD)}border:1px solid ${SILVER};border-radius:6px;font-size:14px;color:${TEXT};"><strong class="navy" style="color:${NAVY};">${label}.</strong> ${esc(text)}</div>`;
 
-function quizBlock(q, idx) {
+function quizBlock(q, idx, showBrand) {
+  const brandTag = showBrand ? ` <span class="muted" style="font-weight:400;color:${STEEL};">(${esc(q.brand)})</span>` : '';
   return `<div style="margin:0 0 14px;">
-    <div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">Q${idx + 1} <span class="muted" style="font-weight:400;color:${STEEL};">(${esc(q.brand)})</span> — ${esc(q.q)}</div>
+    <div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">Q${idx + 1}${brandTag} — ${esc(q.q)}</div>
     ${q.o.map((o, i) => optRow(letters[i], o)).join('')}</div>`;
 }
 
-const answersHtml = [
-  ...quiz.map((q, i) => `<p class="txt" style="margin:0 0 8px;font-size:13px;color:${TEXT};"><strong class="navy" style="color:${NAVY};">Q${i + 1}: ${letters[q.c]}</strong> — ${esc(q.e || q.o[q.c])}</p>`),
-  ...(scenario ? [`<p class="txt" style="margin:0 0 8px;font-size:13px;color:${TEXT};"><strong class="navy" style="color:${NAVY};">Scenario: ${letters[scenario.c]}</strong> — ${esc(scenario.e || scenario.o[scenario.c])}</p>`] : []),
-].join('');
+const objectionBox = (ob) =>
+  `<div class="tint" style="margin:0 0 10px;padding:12px 14px;${bg(TINT)}border-radius:6px;">
+    <div class="navy" style="font-size:12px;font-weight:700;color:${NAVY};margin-bottom:4px;">&ldquo;${esc(ob.q)}&rdquo;</div>
+    <div class="txt" style="font-size:13px;color:${TEXT};line-height:1.55;">${esc(ob.a)}</div></div>`;
+
+const answerLine = (label, q) =>
+  `<p class="txt" style="margin:0 0 8px;font-size:13px;color:${TEXT};"><strong class="navy" style="color:${NAVY};">${label}: ${letters[q.c]}</strong> — ${esc(q.e || q.o[q.c])}</p>`;
+
+// ---------- compose the day's email ----------
 
 const sections = [];
+let subject, headline;
 
-sections.push(card(`Brand spotlight — ${esc(spotlight.name)}`,
-  `<div class="navy" style="font-size:16px;font-weight:700;color:${NAVY};margin-bottom:4px;">${esc(spotlight.name)}</div>
-   <div class="muted" style="font-size:13px;color:${STEEL};margin-bottom:12px;">${esc(spotlight.tagline || '')}</div>
-   <div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;">${talkingPoint}</div>
-   ${objection ? `<div class="tint" style="margin-top:14px;padding:12px 14px;${bg(TINT)}border-radius:6px;">
-     <div class="navy" style="font-size:12px;font-weight:700;color:${NAVY};margin-bottom:4px;">Objection: &ldquo;${esc(objection.q)}&rdquo;</div>
-     <div class="txt" style="font-size:13px;color:${TEXT};line-height:1.55;">${esc(objection.a)}</div></div>` : ''}`, NAVY));
+if (isExamDay) {
+  // ----- Friday: general exam across every brand -----
+  const allQuiz = brands.flatMap(b => (b.quiz || []).map(q => ({ ...q, brand: b.name })));
+  const allScenarios = brands.flatMap(b => (b.scenarios || []).map(s => ({ ...s, brand: b.name })));
+  const exam = pickN(allQuiz, 8);
+  const scenario = pick(allScenarios);
 
-sections.push(card('Quick quiz — answers at the bottom, no peeking', quiz.map(quizBlock).join('')));
+  subject = `IOR Weekly Exam — all brands (${shortDate})`;
+  headline = 'Weekly General Exam';
 
-if (scenario) {
+  sections.push(card('This week’s exam',
+    `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;">Eight questions across the whole range, plus one scenario. No notes, no peeking — answers at the bottom. Score yourself out of 9.</div>`, NAVY));
+
+  sections.push(card('Questions', exam.map((q, i) => quizBlock(q, i, true)).join('')));
+
   sections.push(card(`Scenario — ${esc(scenario.brand)}`,
     `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;margin-bottom:8px;">${esc(scenario.scenario)}</div>
      <div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">${esc(scenario.q)}</div>
      ${scenario.o.map((o, i) => optRow(letters[i], o)).join('')}`));
+
+  sections.push(card('Answers',
+    exam.map((q, i) => answerLine(`Q${i + 1}`, q)).join('') + answerLine('Scenario', scenario), '#2E8B57'));
+
+} else {
+  // ----- Study day: one brand in focus, module-style -----
+  const products = pickN(focus.products || [], Math.min(2, (focus.products || []).length));
+  const talkingPoints = pickN(focus.talkingPoints || [], 2);
+  const objections = pickN(focus.objections || [], 2);
+  const quiz = pickN((focus.quiz || []).map(q => ({ ...q, brand: focus.name })), 3);
+  const flashcard = pick(focus.flashcards || []);
+
+  subject = `IOR Daily Training — Focus: ${focus.name} (${shortDate})`;
+  headline = `Brand Focus — ${focus.name}`;
+
+  sections.push(card(`Today’s brand — ${esc(focus.name)}`,
+    `<div class="navy" style="font-size:18px;font-weight:700;color:${NAVY};margin-bottom:2px;">${esc(focus.name)}</div>
+     <div class="muted" style="font-size:13px;color:${STEEL};margin-bottom:12px;">${esc(focus.tagline || '')}</div>
+     <div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;">${flattenHtml(focus.positioning)}</div>`, NAVY));
+
+  if (products.length) {
+    sections.push(card('Products to know', products.map(p =>
+      `<div style="margin:0 0 16px;">
+        <div class="navy" style="font-size:15px;font-weight:700;color:${NAVY};">${esc(p.name)}</div>
+        <div class="txt" style="font-size:13px;color:${TEXT};margin:2px 0 8px;line-height:1.5;">${esc(p.what || '')}</div>
+        ${(p.specs || []).map(s => `<div class="opt txt" style="padding:5px 10px;margin:3px 0;${bg(CLOUD)}border:1px solid ${SILVER};border-radius:6px;font-size:13px;color:${TEXT};"><strong class="navy" style="color:${NAVY};">${esc(s.k)}:</strong> ${esc(s.v)}</div>`).join('')}
+        ${p.use ? `<div class="muted" style="font-size:12px;color:${STEEL};margin-top:6px;"><em>Where it wins: ${esc(p.use)}</em></div>` : ''}
+      </div>`).join('')));
+  }
+
+  if (focus.verticals?.length) {
+    sections.push(card('Where it fits',
+      focus.verticals.map(v => `<div class="txt" style="font-size:13px;color:${TEXT};line-height:1.55;margin:0 0 6px;">&bull; ${esc(v)}</div>`).join('')));
+  }
+
+  if (talkingPoints.length) {
+    sections.push(card('Talking points',
+      talkingPoints.map(tp => `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;margin:0 0 10px;">${flattenHtml(tp)}</div>`).join('')));
+  }
+
+  if (objections.length) {
+    sections.push(card('Objection handling', objections.map(objectionBox).join('')));
+  }
+
+  sections.push(card(`Quick quiz — ${esc(focus.name)} only`, quiz.map((q, i) => quizBlock(q, i, false)).join('')));
+
+  if (flashcard) {
+    sections.push(card('One to remember',
+      `<div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">${esc(flashcard.q)}</div>
+       <div class="txt" style="font-size:14px;color:${TEXT};line-height:1.55;">${esc(flashcard.a)}</div>`));
+  }
+
+  sections.push(card('Answers', quiz.map((q, i) => answerLine(`Q${i + 1}`, q)).join(''), '#2E8B57'));
 }
 
-for (const c of cards) {
-  sections.push(card(`Flashcard — ${esc(c.brand)}`,
-    `<div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:8px;">${esc(c.q)}</div>
-     <div class="txt" style="font-size:14px;color:${TEXT};line-height:1.55;">${esc(c.a)}</div>`));
-}
-
-sections.push(card('Answers', answersHtml, '#2E8B57'));
-
-// Colour re-assertions for dark mode:
+// ---------- colour re-assertions for dark mode ----------
 // - @media (prefers-color-scheme: dark): Apple Mail & friends
 // - [data-ogsc] (text) / [data-ogsb] (backgrounds): Outlook.com / new Outlook dark mode
+
 const darkModeCss = `
   :root { color-scheme: light; supported-color-schemes: light; }
   @media (prefers-color-scheme: dark) {
@@ -199,7 +265,7 @@ const emailHtml = `<!DOCTYPE html>
 <div class="page" style="${bg(CLOUD)}padding:24px 12px;font-family:${FONT};">
 <div style="max-width:640px;margin:0 auto;">
   <div class="hdr" style="${bg(NAVY)}border-radius:10px 10px 0 0;padding:22px 24px;">
-    <div class="hdr-t" style="color:#ffffff;font-size:19px;font-weight:700;">IO<span class="blue" style="color:${BLUE};">Resource</span> &mdash; Daily Product Training</div>
+    <div class="hdr-t" style="color:#ffffff;font-size:19px;font-weight:700;">IO<span class="blue" style="color:${BLUE};">Resource</span> &mdash; ${headline}</div>
     <div class="hdr-d" style="color:#B8C4DF;font-size:13px;margin-top:4px;">${dateStr}</div>
   </div>
   <div style="padding:20px 0 4px;">${sections.join('')}</div>
@@ -209,8 +275,6 @@ const emailHtml = `<!DOCTYPE html>
   </div>
 </div></div>
 </body></html>`;
-
-const subject = `IOR Daily Training — ${spotlight.name} spotlight + quiz (${shortDate})`;
 
 // ---------- send ----------
 

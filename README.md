@@ -17,16 +17,19 @@ Interactive, self-contained product training app for the IO Resource sales team,
 
 ## Daily snippet emails
 
-Every morning (~08:15 Irish time) GitHub Actions runs `scripts/daily-snippet.mjs`, which:
+Every morning (~08:15 Irish time) GitHub Actions runs `scripts/daily-snippet.mjs`, which extracts the `DATA` object straight out of `IOR-Product-Training.html` — so new content added to the app automatically enters the email rotation, no extra step.
 
-1. Extracts the `DATA` object straight out of `IOR-Product-Training.html` — so new content added to the app automatically enters the email rotation, no extra step.
-2. Picks a **date-seeded random mix**: one brand spotlight (talking point + objection handler), 3 quiz questions, and either a sales scenario or 2 flashcards (alternating days). Answers at the bottom.
-3. Sends a branded HTML email via Resend.
+**Curriculum:**
+
+- **Study days (Sat–Thu):** one brand in focus, rotating through all 10 in the app's order — positioning, two products with specs, verticals, talking points, objection handling, a 3-question quiz on that brand, and one flashcard. The product/question slice is date-seeded, so a brand's repeat visits show different material. Full cycle ≈ 12 days.
+- **Fridays:** general exam — 8 questions across all brands plus a scenario, score yourself out of 9.
 
 Manual run / test:
 
 ```bash
-node scripts/daily-snippet.mjs --dry-run     # writes out/preview.html, sends nothing
+node scripts/daily-snippet.mjs --dry-run                 # writes out/preview.html, sends nothing
+node scripts/daily-snippet.mjs --dry-run --force-exam    # preview the Friday exam format
+node scripts/daily-snippet.mjs --dry-run --brand urovo   # preview a specific brand focus
 RESEND_API_KEY=re_xxx node scripts/daily-snippet.mjs
 ```
 
