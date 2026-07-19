@@ -164,6 +164,22 @@ const answerLine = (label, q) =>
 const sections = [];
 let subject, headline;
 
+// Plain-text alternative. Resend would otherwise auto-generate one that dumps
+// every instant-answer URL inline — unreadable. Ours carries no per-option
+// links; Outlook's "view in a web browser" and text-only clients get this.
+const plain = (s) => String(s || '')
+  .replace(/<br\s*\/?>/gi, '\n')
+  .replace(/<\/p>\s*/gi, '\n\n')
+  .replace(/<[^>]+>/g, '')
+  .replace(/\n{3,}/g, '\n\n').trim()
+  .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+  .replace(/&mdash;/g, '—').replace(/&ndash;/g, '–')
+  .replace(/&ldquo;/g, '“').replace(/&rdquo;/g, '”').replace(/&rsquo;/g, '’')
+  .replace(/&bull;/g, '•').replace(/&hellip;/g, '…').replace(/&nbsp;/g, ' ');
+const tl = [];
+const T = (s = '') => tl.push(s);
+const RULE = '----------------------------------------';
+
 if (isExamDay) {
   // ----- Friday: general exam across every brand -----
   const allQuiz = brands.flatMap(b => (b.quiz || []).map(q => ({ ...q, brand: b.name })));
@@ -187,6 +203,22 @@ if (isExamDay) {
 
   sections.push(card('Answers',
     exam.map((q, i) => answerLine(`Q${i + 1}`, q)).join('') + answerLine('Scenario', scenario), '#2E8B57'));
+
+  // plain-text version
+  T(`IOResource — Weekly General Exam`); T(dateStr); T();
+  T(`Eight questions across the whole range, plus one scenario.`);
+  T(`Answers at the bottom. Score yourself out of 9.`);
+  T(`Full training app: ${SITE_URL}`); T(); T(RULE); T();
+  exam.forEach((q, i) => {
+    T(`Q${i + 1} (${q.brand}) — ${plain(q.q)}`);
+    q.o.forEach((o, j) => T(`  ${letters[j]}. ${plain(o)}`));
+    T();
+  });
+  T(`SCENARIO (${scenario.brand})`); T(plain(scenario.scenario)); T(plain(scenario.q));
+  scenario.o.forEach((o, j) => T(`  ${letters[j]}. ${plain(o)}`)); T(); T(RULE); T();
+  T('ANSWERS');
+  exam.forEach((q, i) => T(`Q${i + 1}: ${letters[q.c]} — ${plain(q.e || q.o[q.c])}`));
+  T(`Scenario: ${letters[scenario.c]} — ${plain(scenario.e || scenario.o[scenario.c])}`);
 
 } else {
   // ----- Study day: one brand in focus, module-style -----
@@ -238,6 +270,43 @@ if (isExamDay) {
   }
 
   sections.push(card('Answers', quiz.map((q, i) => answerLine(`Q${i + 1}`, q)).join(''), '#2E8B57'));
+
+  // plain-text version
+  T(`IOResource — Brand Focus: ${focus.name}`); T(dateStr); T();
+  T(`${focus.name} — ${plain(focus.tagline)}`); T();
+  T(plain(focus.positioning)); T();
+  T(`Full training app: ${SITE_URL}`); T(); T(RULE); T();
+  if (products.length) {
+    T('PRODUCTS TO KNOW'); T();
+    for (const p of products) {
+      T(`${p.name} — ${plain(p.what)}`);
+      (p.specs || []).forEach(s => T(`  ${plain(s.k)}: ${plain(s.v)}`));
+      if (p.use) T(`  Where it wins: ${plain(p.use)}`);
+      T();
+    }
+  }
+  if (focus.verticals?.length) {
+    T('WHERE IT FITS');
+    focus.verticals.forEach(v => T(`  • ${plain(v)}`)); T();
+  }
+  if (talkingPoints.length) {
+    T('TALKING POINTS');
+    talkingPoints.forEach(tp => T(`  • ${plain(tp)}`)); T();
+  }
+  if (objections.length) {
+    T('OBJECTION HANDLING');
+    objections.forEach(ob => { T(`  “${plain(ob.q)}”`); T(`  ${plain(ob.a)}`); T(); });
+  }
+  T(`QUICK QUIZ — ${focus.name} only (answers below)`); T();
+  quiz.forEach((q, i) => {
+    T(`Q${i + 1} — ${plain(q.q)}`);
+    q.o.forEach((o, j) => T(`  ${letters[j]}. ${plain(o)}`));
+    T();
+  });
+  if (flashcard) { T('ONE TO REMEMBER'); T(`  ${plain(flashcard.q)}`); T(`  ${plain(flashcard.a)}`); T(); }
+  T(RULE); T();
+  T('ANSWERS');
+  quiz.forEach((q, i) => T(`Q${i + 1}: ${letters[q.c]} — ${plain(q.e || q.o[q.c])}`));
 }
 
 // ---------- colour re-assertions for dark mode ----------
@@ -300,9 +369,12 @@ const emailHtml = `<!DOCTYPE html>
 
 // ---------- send ----------
 
+const emailText = tl.join('\n') + `\n\n${RULE}\nOpen the full training app: ${SITE_URL}\nSupply. Configure. Support.\n`;
+
 const outDir = path.join(ROOT, 'out');
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, 'preview.html'), emailHtml);
+fs.writeFileSync(path.join(outDir, 'preview.txt'), emailText);
 
 if (DRY_RUN) {
   console.log(`Dry run — wrote out/preview.html\nSubject: ${subject}`);
@@ -318,7 +390,7 @@ const from = process.env.SNIPPET_FROM || 'IO Resource Training <onboarding@resen
 const res = await fetch('https://api.resend.com/emails', {
   method: 'POST',
   headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-  body: JSON.stringify({ from, to, subject, html: emailHtml }),
+  body: JSON.stringify({ from, to, subject, html: emailHtml, text: emailText }),
 });
 const body = await res.text();
 if (!res.ok) { console.error(`Resend returned ${res.status}: ${body}`); process.exit(1); }
