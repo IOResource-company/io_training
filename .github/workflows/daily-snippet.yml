@@ -1,0 +1,23 @@
+name: Daily training snippet
+
+on:
+  schedule:
+    # 07:15 UTC = 08:15 Irish summer time / 07:15 winter
+    - cron: '15 7 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Send today's snippet
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: node scripts/daily-snippet.mjs
