@@ -135,12 +135,15 @@ function resultLink(q, pickIdx, n, total) {
   return `${RESULT_URL}#${params.toString()}`;
 }
 
+// Box styling lives on a <div> wrapper: classic Outlook (Word engine) ignores
+// display:block on <a>, so a bare styled anchor collapses options onto one
+// line. A div per option guarantees one row per answer everywhere.
 const optRow = (label, text, href) => {
-  const style = `display:block;padding:6px 10px;margin:4px 0;${bg(CLOUD)}border:1px solid ${SILVER};border-radius:6px;font-size:14px;color:${TEXT};text-decoration:none;`;
+  const boxStyle = `padding:6px 10px;margin:4px 0;${bg(CLOUD)}border:1px solid ${SILVER};border-radius:6px;font-size:14px;color:${TEXT};`;
   const inner = `<strong class="navy" style="color:${NAVY};">${label}.</strong> ${esc(text)}`;
   return href
-    ? `<a class="opt txt" href="${href.replace(/&/g, '&amp;')}" style="${style}">${inner}</a>`
-    : `<div class="opt txt" style="${style}">${inner}</div>`;
+    ? `<div class="opt" style="${boxStyle}"><a class="txt" href="${href.replace(/&/g, '&amp;')}" style="display:block;color:${TEXT};text-decoration:none;">${inner}</a></div>`
+    : `<div class="opt txt" style="${boxStyle}">${inner}</div>`;
 };
 
 // n/total wire up the tap-for-instant-answer links; omit for a plain block.
