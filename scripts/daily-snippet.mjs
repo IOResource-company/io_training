@@ -145,7 +145,11 @@ for (const c of cards) {
 
 sections.push(card('Answers', answersHtml, '#2E8B57'));
 
-const emailHtml = `<div style="background:${CLOUD};padding:24px 12px;font-family:${FONT};">
+const emailHtml = `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>IO Resource — Daily Product Training</title></head>
+<body style="margin:0;padding:0;">
+<div style="background:${CLOUD};padding:24px 12px;font-family:${FONT};">
 <div style="max-width:640px;margin:0 auto;">
   <div style="background:${NAVY};border-radius:10px 10px 0 0;padding:22px 24px;">
     <div style="color:#ffffff;font-size:19px;font-weight:700;">IO<span style="color:${BLUE};">Resource</span> &mdash; Daily Product Training</div>
@@ -156,7 +160,8 @@ const emailHtml = `<div style="background:${CLOUD};padding:24px 12px;font-family
     <a href="${SITE_URL}" style="display:inline-block;background:${BLUE};color:#ffffff;text-decoration:none;font-size:14px;font-weight:600;padding:10px 22px;border-radius:6px;">Open the full training app</a>
     <div style="font-size:11px;letter-spacing:1.5px;color:${STEEL};margin-top:14px;text-transform:uppercase;">Supply. Configure. Support.</div>
   </div>
-</div></div>`;
+</div></div>
+</body></html>`;
 
 const subject = `IOR Daily Training — ${spotlight.name} spotlight + quiz (${shortDate})`;
 
