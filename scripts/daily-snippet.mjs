@@ -29,7 +29,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const HTML_PATH = path.join(ROOT, 'IOR-Product-Training.html');
-const SITE_URL = process.env.SITE_URL || 'https://ioresource-company.github.io/io_training/';
+const SITE_URL = process.env.SITE_URL || 'https://io-training.vercel.app/IOR-Product-Training.html';
 const DRY_RUN = process.argv.includes('--dry-run');
 const FORCE_EXAM = process.argv.includes('--force-exam');
 const FORCE_BRAND = (() => { const i = process.argv.indexOf('--brand'); return i > -1 ? process.argv[i + 1] : null; })();
@@ -267,6 +267,7 @@ const emailHtml = `<!DOCTYPE html>
   <div class="hdr" style="${bg(NAVY)}border-radius:10px 10px 0 0;padding:22px 24px;">
     <div class="hdr-t" style="color:#ffffff;font-size:19px;font-weight:700;">IO<span class="blue" style="color:${BLUE};">Resource</span> &mdash; ${headline}</div>
     <div class="hdr-d" style="color:#B8C4DF;font-size:13px;margin-top:4px;">${dateStr}</div>
+    <div style="margin-top:10px;"><a href="${SITE_URL}" class="hdr-t" style="color:#ffffff;font-size:13px;font-weight:600;text-decoration:underline;">Open the full training app &rarr;</a></div>
   </div>
   <div style="padding:20px 0 4px;">${sections.join('')}</div>
   <div class="foot" style="${bg('#ffffff')}border:1px solid ${SILVER};border-radius:0 0 10px 10px;padding:16px 24px;text-align:center;">

@@ -2,7 +2,8 @@
 
 Interactive, self-contained product training app for the IO Resource sales team, plus a daily training-snippet email pipeline.
 
-**Live site:** https://ioresource-company.github.io/io_training/
+**Live site:** https://io-training.vercel.app/IOR-Product-Training.html (Vercel, auto-deploys from this repo)
+Mirror: https://ioresource-company.github.io/io_training/ (GitHub Pages)
 
 ## What's here
 
