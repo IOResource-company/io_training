@@ -122,18 +122,15 @@ function card(title, inner, accent = BLUE) {
     ${inner}</div>`;
 }
 
-// Instant-answer links: each option carries its verdict + explanation to the
-// static results page (daily.html) in the URL fragment — no backend needed.
-const RESULT_URL = SITE_URL.replace(/[^/]*$/, '') + 'daily.html';
+// Interactive quiz lives on the site (daily-quiz.html + today.json published
+// with each send): answers turn green/red in place there — email clients
+// can't do that inline (Outlook strips scripts and :checked CSS).
+const QUIZ_URL = SITE_URL.replace(/[^/]*$/, '') + 'daily-quiz.html';
 
-function resultLink(q, pickIdx, n, total) {
-  const params = new URLSearchParams({
-    d: String(dayNum), n: String(n), t: String(total),
-    p: String(pickIdx), c: String(q.c),
-    b: q.brand || '', q: q.q, e: q.e || q.o[q.c],
-  });
-  return `${RESULT_URL}#${params.toString()}`;
-}
+const quizButton =
+  `<div style="text-align:center;margin:6px 0 2px;">
+    <a href="${QUIZ_URL}" class="btn" style="display:inline-block;${bg(BLUE)}color:#ffffff;text-decoration:none;font-size:14px;font-weight:600;padding:10px 22px;border-radius:6px;">Take today&rsquo;s quiz &mdash; instant answers &rarr;</a>
+  </div>`;
 
 // Box styling lives on a <div> wrapper: classic Outlook (Word engine) ignores
 // display:block on <a>, so a bare styled anchor collapses options onto one
@@ -146,12 +143,11 @@ const optRow = (label, text, href) => {
     : `<div class="opt txt" style="${boxStyle}">${inner}</div>`;
 };
 
-// n/total wire up the tap-for-instant-answer links; omit for a plain block.
-function quizBlock(q, idx, showBrand, n, total) {
+function quizBlock(q, idx, showBrand) {
   const brandTag = showBrand ? ` <span class="muted" style="font-weight:400;color:${STEEL};">(${esc(q.brand)})</span>` : '';
   return `<div style="margin:0 0 14px;">
     <div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">Q${idx + 1}${brandTag} — ${esc(q.q)}</div>
-    ${q.o.map((o, i) => optRow(letters[i], o, n ? resultLink(q, i, n, total) : undefined)).join('')}</div>`;
+    ${q.o.map((o, i) => optRow(letters[i], o)).join('')}</div>`;
 }
 
 const objectionBox = (ob) =>
@@ -165,7 +161,7 @@ const answerLine = (label, q) =>
 // ---------- compose the day's email ----------
 
 const sections = [];
-let subject, headline;
+let subject, headline, quizData;
 
 // Plain-text alternative. Resend would otherwise auto-generate one that dumps
 // every instant-answer URL inline — unreadable. Ours carries no per-option
@@ -194,15 +190,23 @@ if (isExamDay) {
   headline = 'Weekly General Exam';
 
   sections.push(card('This week’s exam',
-    `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;">Eight questions across the whole range, plus one scenario. Tap an answer to see instantly whether you got it right — it keeps your score for the day. (Answers are also at the bottom.)</div>`, NAVY));
+    `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;margin-bottom:10px;">Eight questions across the whole range, plus one scenario. Take it interactively — answers turn green or red as you tap, score at the top. Or read on and check yourself against the answers at the bottom.</div>
+     ${quizButton}`, NAVY));
 
-  const TOTAL = exam.length + 1;
-  sections.push(card('Questions', exam.map((q, i) => quizBlock(q, i, true, i + 1, TOTAL)).join('')));
+  sections.push(card('Questions', exam.map((q, i) => quizBlock(q, i, true)).join('')));
 
   sections.push(card(`Scenario — ${esc(scenario.brand)}`,
     `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;margin-bottom:8px;">${esc(scenario.scenario)}</div>
      <div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">${esc(scenario.q)}</div>
-     ${scenario.o.map((o, i) => optRow(letters[i], o, resultLink(scenario, i, TOTAL, TOTAL))).join('')}`));
+     ${scenario.o.map((o, i) => optRow(letters[i], o)).join('')}`));
+
+  quizData = {
+    d: dayNum, mode: 'exam', date: dateStr,
+    questions: [
+      ...exam.map(q => ({ q: q.q, o: q.o, c: q.c, e: q.e || '', brand: q.brand })),
+      { scenario: scenario.scenario, q: scenario.q, o: scenario.o, c: scenario.c, e: scenario.e || '', brand: scenario.brand },
+    ],
+  };
 
   sections.push(card('Answers',
     exam.map((q, i) => answerLine(`Q${i + 1}`, q)).join('') + answerLine('Scenario', scenario), '#2E8B57'));
@@ -263,8 +267,13 @@ if (isExamDay) {
     sections.push(card('Objection handling', objections.map(objectionBox).join('')));
   }
 
-  sections.push(card(`Quick quiz — ${esc(focus.name)} only. Tap an answer to check it instantly`,
-    quiz.map((q, i) => quizBlock(q, i, false, i + 1, quiz.length)).join('')));
+  sections.push(card(`Quick quiz — ${esc(focus.name)} only`,
+    quiz.map((q, i) => quizBlock(q, i, false)).join('') + quizButton));
+
+  quizData = {
+    d: dayNum, mode: 'study', brand: focus.name, date: dateStr,
+    questions: quiz.map(q => ({ q: q.q, o: q.o, c: q.c, e: q.e || '', brand: focus.name })),
+  };
 
   if (flashcard) {
     sections.push(card('One to remember',
@@ -378,6 +387,8 @@ const outDir = path.join(ROOT, 'out');
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, 'preview.html'), emailHtml);
 fs.writeFileSync(path.join(outDir, 'preview.txt'), emailText);
+// published alongside the site so daily-quiz.html can render today's questions
+fs.writeFileSync(path.join(ROOT, 'today.json'), JSON.stringify(quizData, null, 1));
 
 if (DRY_RUN) {
   console.log(`Dry run — wrote out/preview.html\nSubject: ${subject}`);

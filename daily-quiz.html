@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IO Resource — Today's Quiz</title>
+<style>
+:root{--navy:#09246B;--blue:#0073E6;--tint:#E6F1FD;--steel:#5A6B7C;--silver:#D7DCE3;--cloud:#F4F6F9;--text:#1B2433;--green:#2E8B57;--green-bg:#eaf6ef;--red:#C0392B;--red-bg:#fbecea;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--cloud);color:var(--text);line-height:1.6;min-height:100vh;}
+.hdr{background:linear-gradient(135deg,var(--navy),#3A5089);color:#fff;padding:1.1rem 1.25rem;position:sticky;top:0;z-index:10;box-shadow:0 2px 10px rgba(0,0,0,.15);}
+.hdr .t{font-size:1.05rem;font-weight:700;}
+.hdr .t span{color:var(--blue);}
+.hdr .sub{font-size:.78rem;opacity:.85;}
+.scorebar{display:flex;align-items:center;gap:.6rem;margin-top:.5rem;}
+.scorebar .s{font-size:.85rem;font-weight:700;white-space:nowrap;}
+.bar{flex:1;height:7px;background:rgba(255,255,255,.25);border-radius:4px;overflow:hidden;}
+.bar i{display:block;height:100%;background:var(--blue);border-radius:4px;width:0;transition:width .3s;}
+.wrap{max-width:620px;margin:0 auto;padding:1.25rem 1rem 2.5rem;}
+.card{background:#fff;border:1px solid var(--silver);border-left:4px solid var(--blue);border-radius:10px;padding:1.15rem 1.15rem 1rem;margin-bottom:1rem;box-shadow:0 1px 6px rgba(9,36,107,.05);}
+.qh{font-size:.93rem;font-weight:600;color:var(--navy);margin-bottom:.6rem;}
+.qh .b{color:var(--steel);font-weight:400;}
+.scen{font-size:.86rem;color:var(--text);background:var(--tint);border-radius:8px;padding:.7rem .85rem;margin-bottom:.7rem;}
+.opt{display:block;width:100%;text-align:left;padding:.55rem .75rem;margin:.35rem 0;background:var(--cloud);border:1px solid var(--silver);border-radius:8px;font-size:.9rem;font-family:inherit;color:var(--text);cursor:pointer;transition:background .15s,border-color .15s;}
+.opt:hover{border-color:var(--blue);}
+.opt b{color:var(--navy);}
+.opt.right{background:var(--green-bg);border-color:var(--green);color:var(--green);font-weight:600;}
+.opt.right b{color:var(--green);}
+.opt.wrong{background:var(--red-bg);border-color:var(--red);color:var(--red);font-weight:600;}
+.opt.wrong b{color:var(--red);}
+.opt:disabled{cursor:default;}
+.opt.dim{opacity:.55;}
+.exp{max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .35s ease,margin .35s ease;background:var(--tint);border-radius:8px;font-size:.85rem;margin:0;}
+.exp.show{max-height:400px;opacity:1;margin-top:.6rem;padding:.75rem .9rem;}
+.exp b{color:var(--navy);}
+.done{background:var(--navy);color:#fff;border:none;border-radius:10px;padding:1.2rem;text-align:center;margin-bottom:1rem;display:none;}
+.done.show{display:block;}
+.done .big{font-size:1.8rem;font-weight:700;}
+.done .msg{font-size:.9rem;opacity:.9;}
+.btn{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;padding:.7rem 1rem;border-radius:8px;margin-top:1rem;}
+.tag{font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--steel);text-align:center;margin-top:1.1rem;}
+.note{font-size:.8rem;color:var(--steel);text-align:center;margin-bottom:.9rem;}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="t">IO<span>Resource</span> — Today's Quiz</div>
+  <div class="sub" id="sub"></div>
+  <div class="scorebar"><span class="s" id="score">0/0</span><div class="bar"><i id="bar"></i></div><span class="s" id="prog"></span></div>
+</div>
+<div class="wrap">
+  <div class="note" id="note"></div>
+  <div id="quiz"></div>
+  <div class="done" id="done"><div class="big" id="doneScore"></div><div class="msg" id="doneMsg"></div></div>
+  <a class="btn" href="IOR-Product-Training.html">Open the full training app</a>
+  <div class="tag">Supply. Configure. Support.</div>
+</div>
+<script>
+const L = ['A', 'B', 'C', 'D'];
+let QS = [], DKEY = '', state = {};
+
+function save() { try { localStorage.setItem(DKEY, JSON.stringify(state)); } catch (e) {} }
+
+function updateScore() {
+  const done = Object.keys(state).length;
+  const right = Object.values(state).filter(s => s.ok).length;
+  document.getElementById('score').textContent = right + '/' + done + ' correct';
+  document.getElementById('prog').textContent = done + '/' + QS.length;
+  document.getElementById('bar').style.width = QS.length ? (100 * done / QS.length) + '%' : '0';
+  const doneBox = document.getElementById('done');
+  if (done === QS.length && QS.length) {
+    doneBox.className = 'done show';
+    document.getElementById('doneScore').textContent = right + ' / ' + QS.length;
+    document.getElementById('doneMsg').textContent =
+      right === QS.length ? 'Full marks. Go sell something.' :
+      right >= QS.length * 0.7 ? 'Strong — review the ones you missed below.' :
+      'Worth a re-read of today’s email, then try again tomorrow.';
+  }
+}
+
+function answer(qi, oi, btn) {
+  if (state[qi]) return;
+  const q = QS[qi];
+  const ok = oi === q.c;
+  state[qi] = { pick: oi, ok: ok };
+  save();
+  paint(qi);
+  updateScore();
+}
+
+function paint(qi) {
+  const q = QS[qi], st = state[qi];
+  const card = document.getElementById('q' + qi);
+  card.querySelectorAll('.opt').forEach((b, oi) => {
+    b.disabled = true;
+    if (oi === q.c) b.className = 'opt right';
+    else if (st && oi === st.pick) b.className = 'opt wrong';
+    else b.className = 'opt dim';
+  });
+  card.querySelector('.exp').className = 'exp show';
+}
+
+function build(data) {
+  QS = data.questions || [];
+  DKEY = 'iorQuiz-' + data.d;
+  try { state = JSON.parse(localStorage.getItem(DKEY) || '{}'); } catch (e) { state = {}; }
+  document.getElementById('sub').textContent =
+    (data.mode === 'exam' ? 'Weekly General Exam' : 'Brand Focus — ' + (data.brand || '')) + ' · ' + (data.date || '');
+  const el = document.getElementById('quiz');
+  el.innerHTML = QS.map((q, qi) =>
+    '<div class="card" id="q' + qi + '">' +
+    (q.scenario ? '<div class="scen">' + escp(q.scenario) + '</div>' : '') +
+    '<div class="qh">Q' + (qi + 1) + (q.brand && data.mode === 'exam' ? ' <span class="b">(' + escp(q.brand) + ')</span>' : '') + ' — ' + escp(q.q) + '</div>' +
+    q.o.map((o, oi) => '<button class="opt" onclick="answer(' + qi + ',' + oi + ',this)"><b>' + L[oi] + '.</b> ' + escp(o) + '</button>').join('') +
+    '<div class="exp"><b>' + L[q.c] + '.</b> ' + escp(q.e || q.o[q.c]) + '</div>' +
+    '</div>'
+  ).join('');
+  Object.keys(state).forEach(qi => paint(+qi));
+  updateScore();
+  // stale-data note if the quiz isn't from today
+  const todayD = Math.floor(Date.now() / 86400000);
+  if (data.d && data.d !== todayD) {
+    document.getElementById('note').textContent = 'This is the quiz from ' + (data.date || 'a previous day') + ' — a new one lands with tomorrow’s email.';
+  }
+}
+
+function escp(s) { const d = document.createElement('div'); d.textContent = String(s == null ? '' : s); return d.innerHTML; }
+
+fetch('today.json?t=' + Date.now())
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(build)
+  .catch(() => {
+    document.getElementById('quiz').innerHTML =
+      '<div class="card"><div class="qh">Today’s quiz isn’t published yet.</div><div class="scen">It goes live with the morning training email. Open the full training app below in the meantime.</div></div>';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+ "d": 20653,
+ "mode": "study",
+ "brand": "Honeywell",
+ "date": "Sunday 19 July 2026",
+ "questions": [
+  {
+   "q": "Which Honeywell family is the ultra-rugged, IP65 industrial scanner for warehouse and manufacturing?",
+   "o": [
+    "Orbit",
+    "Granit",
+    "Eclipse",
+    "Genesis"
+   ],
+   "c": 1,
+   "e": "Granit (e.g. 1990i/1991i) is IP65-sealed, drop-rated and reads damaged/dirty labels; the XR variant adds extended range.",
+   "brand": "Honeywell"
+  },
+  {
+   "q": "Which Honeywell handheld is the lowest-cost entry point for 1D retail POS scanning?",
+   "o": [
+    "Voyager 1200g",
+    "Granit 1991i",
+    "Xenon 1950g",
+    "HF680"
+   ],
+   "c": 0,
+   "e": "The Voyager 1200g is an entry-level single-line 1D laser — lightweight, USB plug-and-play, the cheapest handheld in the range.",
+   "brand": "Honeywell"
+  },
+  {
+   "q": "For IO Resource, what does the Honeywell brand almost entirely consist of?",
+   "o": [
+    "Label printers",
+    "Barcode scanners (and some mobile computers)",
+    "Tablets and rugged laptops",
+    "Receipt printers and cash drawers"
+   ],
+   "c": 1,
+   "e": "IOR's Honeywell business is ~100% barcode scanners, with a small amount of mobile-computer and accessory volume.",
+   "brand": "Honeywell"
+  }
+ ]
+}

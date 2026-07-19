@@ -7,7 +7,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   send:
@@ -17,6 +17,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Publish today's quiz data (before the email lands)
+        run: |
+          node scripts/daily-snippet.mjs --dry-run
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add today.json
+          git diff --cached --quiet || { git commit -m "today.json $(date -u +%F)"; git push; }
       - name: Send today's snippet
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
