@@ -100,65 +100,112 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const dateStr = today.toLocaleDateString('en-IE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 const shortDate = today.toLocaleDateString('en-IE', { day: 'numeric', month: 'short' });
 
+// Dark-mode defence: Outlook inverts background-color but not background-image,
+// so every background is also painted with a single-colour linear-gradient.
+// Classes (.card/.opt/.tint/.txt/.navy/...) exist so the <style> block can
+// re-assert original colours under Outlook dark mode ([data-ogsc]/[data-ogsb]).
+const bg = (c) => `background-color:${c};background-image:linear-gradient(${c},${c});`;
+const TEXT = '#1B2433';
+
 function card(title, inner, accent = BLUE) {
-  return `<div style="background:#ffffff;border:1px solid ${SILVER};border-left:4px solid ${accent};border-radius:8px;padding:18px 20px;margin:0 0 16px;">
-    <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:${BLUE};margin-bottom:8px;">${title}</div>
+  return `<div class="card" style="${bg('#ffffff')}border:1px solid ${SILVER};border-left:4px solid ${accent};border-radius:8px;padding:18px 20px;margin:0 0 16px;">
+    <div class="blue" style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:${BLUE};margin-bottom:8px;">${title}</div>
     ${inner}</div>`;
 }
 
+const optRow = (label, text) =>
+  `<div class="opt txt" style="padding:6px 10px;margin:4px 0;${bg(CLOUD)}border:1px solid ${SILVER};border-radius:6px;font-size:14px;color:${TEXT};"><strong class="navy" style="color:${NAVY};">${label}.</strong> ${esc(text)}</div>`;
+
 function quizBlock(q, idx) {
-  const opts = q.o.map((o, i) =>
-    `<div style="padding:6px 10px;margin:4px 0;background:${CLOUD};border:1px solid ${SILVER};border-radius:6px;font-size:14px;color:#1B2433;"><strong style="color:${NAVY};">${letters[i]}.</strong> ${esc(o)}</div>`).join('');
   return `<div style="margin:0 0 14px;">
-    <div style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">Q${idx + 1} <span style="font-weight:400;color:${STEEL};">(${esc(q.brand)})</span> — ${esc(q.q)}</div>${opts}</div>`;
+    <div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">Q${idx + 1} <span class="muted" style="font-weight:400;color:${STEEL};">(${esc(q.brand)})</span> — ${esc(q.q)}</div>
+    ${q.o.map((o, i) => optRow(letters[i], o)).join('')}</div>`;
 }
 
 const answersHtml = [
-  ...quiz.map((q, i) => `<p style="margin:0 0 8px;font-size:13px;color:#1B2433;"><strong style="color:${NAVY};">Q${i + 1}: ${letters[q.c]}</strong> — ${esc(q.e || q.o[q.c])}</p>`),
-  ...(scenario ? [`<p style="margin:0 0 8px;font-size:13px;color:#1B2433;"><strong style="color:${NAVY};">Scenario: ${letters[scenario.c]}</strong> — ${esc(scenario.e || scenario.o[scenario.c])}</p>`] : []),
+  ...quiz.map((q, i) => `<p class="txt" style="margin:0 0 8px;font-size:13px;color:${TEXT};"><strong class="navy" style="color:${NAVY};">Q${i + 1}: ${letters[q.c]}</strong> — ${esc(q.e || q.o[q.c])}</p>`),
+  ...(scenario ? [`<p class="txt" style="margin:0 0 8px;font-size:13px;color:${TEXT};"><strong class="navy" style="color:${NAVY};">Scenario: ${letters[scenario.c]}</strong> — ${esc(scenario.e || scenario.o[scenario.c])}</p>`] : []),
 ].join('');
 
 const sections = [];
 
 sections.push(card(`Brand spotlight — ${esc(spotlight.name)}`,
-  `<div style="font-size:16px;font-weight:700;color:${NAVY};margin-bottom:4px;">${esc(spotlight.name)}</div>
-   <div style="font-size:13px;color:${STEEL};margin-bottom:12px;">${esc(spotlight.tagline || '')}</div>
-   <div style="font-size:14px;color:#1B2433;line-height:1.6;">${talkingPoint}</div>
-   ${objection ? `<div style="margin-top:14px;padding:12px 14px;background:${TINT};border-radius:6px;">
-     <div style="font-size:12px;font-weight:700;color:${NAVY};margin-bottom:4px;">Objection: &ldquo;${esc(objection.q)}&rdquo;</div>
-     <div style="font-size:13px;color:#1B2433;line-height:1.55;">${esc(objection.a)}</div></div>` : ''}`, NAVY));
+  `<div class="navy" style="font-size:16px;font-weight:700;color:${NAVY};margin-bottom:4px;">${esc(spotlight.name)}</div>
+   <div class="muted" style="font-size:13px;color:${STEEL};margin-bottom:12px;">${esc(spotlight.tagline || '')}</div>
+   <div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;">${talkingPoint}</div>
+   ${objection ? `<div class="tint" style="margin-top:14px;padding:12px 14px;${bg(TINT)}border-radius:6px;">
+     <div class="navy" style="font-size:12px;font-weight:700;color:${NAVY};margin-bottom:4px;">Objection: &ldquo;${esc(objection.q)}&rdquo;</div>
+     <div class="txt" style="font-size:13px;color:${TEXT};line-height:1.55;">${esc(objection.a)}</div></div>` : ''}`, NAVY));
 
 sections.push(card('Quick quiz — answers at the bottom, no peeking', quiz.map(quizBlock).join('')));
 
 if (scenario) {
   sections.push(card(`Scenario — ${esc(scenario.brand)}`,
-    `<div style="font-size:14px;color:#1B2433;line-height:1.6;margin-bottom:8px;">${esc(scenario.scenario)}</div>
-     <div style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">${esc(scenario.q)}</div>
-     ${scenario.o.map((o, i) => `<div style="padding:6px 10px;margin:4px 0;background:${CLOUD};border:1px solid ${SILVER};border-radius:6px;font-size:14px;"><strong style="color:${NAVY};">${letters[i]}.</strong> ${esc(o)}</div>`).join('')}`));
+    `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;margin-bottom:8px;">${esc(scenario.scenario)}</div>
+     <div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">${esc(scenario.q)}</div>
+     ${scenario.o.map((o, i) => optRow(letters[i], o)).join('')}`));
 }
 
 for (const c of cards) {
   sections.push(card(`Flashcard — ${esc(c.brand)}`,
-    `<div style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:8px;">${esc(c.q)}</div>
-     <div style="font-size:14px;color:#1B2433;line-height:1.55;">${esc(c.a)}</div>`));
+    `<div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:8px;">${esc(c.q)}</div>
+     <div class="txt" style="font-size:14px;color:${TEXT};line-height:1.55;">${esc(c.a)}</div>`));
 }
 
 sections.push(card('Answers', answersHtml, '#2E8B57'));
 
+// Colour re-assertions for dark mode:
+// - @media (prefers-color-scheme: dark): Apple Mail & friends
+// - [data-ogsc] (text) / [data-ogsb] (backgrounds): Outlook.com / new Outlook dark mode
+const darkModeCss = `
+  :root { color-scheme: light; supported-color-schemes: light; }
+  @media (prefers-color-scheme: dark) {
+    body, .page { background: ${CLOUD} !important; }
+    .card, .foot { background: #ffffff !important; }
+    .opt { background: ${CLOUD} !important; }
+    .tint { background: ${TINT} !important; }
+    .hdr { background: ${NAVY} !important; }
+    .txt { color: ${TEXT} !important; }
+    .navy { color: ${NAVY} !important; }
+    .muted { color: ${STEEL} !important; }
+    .blue { color: ${BLUE} !important; }
+    .hdr-t { color: #ffffff !important; }
+    .hdr-d { color: #B8C4DF !important; }
+    .btn { background: ${BLUE} !important; color: #ffffff !important; }
+  }
+  [data-ogsb] body, [data-ogsb] .page { background: ${CLOUD} !important; }
+  [data-ogsb] .card, [data-ogsb] .foot { background: #ffffff !important; }
+  [data-ogsb] .opt { background: ${CLOUD} !important; }
+  [data-ogsb] .tint { background: ${TINT} !important; }
+  [data-ogsb] .hdr { background: ${NAVY} !important; }
+  [data-ogsb] .btn { background: ${BLUE} !important; }
+  [data-ogsc] .txt { color: ${TEXT} !important; }
+  [data-ogsc] .navy { color: ${NAVY} !important; }
+  [data-ogsc] .muted { color: ${STEEL} !important; }
+  [data-ogsc] .blue { color: ${BLUE} !important; }
+  [data-ogsc] .hdr-t { color: #ffffff !important; }
+  [data-ogsc] .hdr-d { color: #B8C4DF !important; }
+  [data-ogsc] .btn { color: #ffffff !important; }
+`;
+
 const emailHtml = `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>IO Resource — Daily Product Training</title></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>IO Resource — Daily Product Training</title>
+<style>${darkModeCss}</style></head>
 <body style="margin:0;padding:0;">
-<div style="background:${CLOUD};padding:24px 12px;font-family:${FONT};">
+<div class="page" style="${bg(CLOUD)}padding:24px 12px;font-family:${FONT};">
 <div style="max-width:640px;margin:0 auto;">
-  <div style="background:${NAVY};border-radius:10px 10px 0 0;padding:22px 24px;">
-    <div style="color:#ffffff;font-size:19px;font-weight:700;">IO<span style="color:${BLUE};">Resource</span> &mdash; Daily Product Training</div>
-    <div style="color:#B8C4DF;font-size:13px;margin-top:4px;">${dateStr}</div>
+  <div class="hdr" style="${bg(NAVY)}border-radius:10px 10px 0 0;padding:22px 24px;">
+    <div class="hdr-t" style="color:#ffffff;font-size:19px;font-weight:700;">IO<span class="blue" style="color:${BLUE};">Resource</span> &mdash; Daily Product Training</div>
+    <div class="hdr-d" style="color:#B8C4DF;font-size:13px;margin-top:4px;">${dateStr}</div>
   </div>
-  <div style="background:${CLOUD};padding:20px 0 4px;">${sections.join('')}</div>
-  <div style="background:#ffffff;border:1px solid ${SILVER};border-radius:0 0 10px 10px;padding:16px 24px;text-align:center;">
-    <a href="${SITE_URL}" style="display:inline-block;background:${BLUE};color:#ffffff;text-decoration:none;font-size:14px;font-weight:600;padding:10px 22px;border-radius:6px;">Open the full training app</a>
-    <div style="font-size:11px;letter-spacing:1.5px;color:${STEEL};margin-top:14px;text-transform:uppercase;">Supply. Configure. Support.</div>
+  <div style="padding:20px 0 4px;">${sections.join('')}</div>
+  <div class="foot" style="${bg('#ffffff')}border:1px solid ${SILVER};border-radius:0 0 10px 10px;padding:16px 24px;text-align:center;">
+    <a href="${SITE_URL}" class="btn" style="display:inline-block;${bg(BLUE)}color:#ffffff;text-decoration:none;font-size:14px;font-weight:600;padding:10px 22px;border-radius:6px;">Open the full training app</a>
+    <div class="muted" style="font-size:11px;letter-spacing:1.5px;color:${STEEL};margin-top:14px;text-transform:uppercase;">Supply. Configure. Support.</div>
   </div>
 </div></div>
 </body></html>`;
