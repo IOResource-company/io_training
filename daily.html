@@ -45,7 +45,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Ar
   <div class="tag">Supply. Configure. Support.</div>
 </div>
 <script>
-(function () {
+function render() {
   const P = new URLSearchParams(location.hash.slice(1));
   const d = P.get('d'), n = +P.get('n'), t = +P.get('t'),
         p = +P.get('p'), c = +P.get('c'),
@@ -55,7 +55,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Ar
   const result = document.getElementById('result');
   const scorecard = document.getElementById('scorecard');
 
+  scorecard.style.display = '';
   if (!P.has('n')) {
+    result.className = 'card';
     result.innerHTML = '<div class="qtext">This page shows instant answers for the daily training email.</div><div class="exp">Tap an answer in today’s email to see whether you got it right.</div>';
     scorecard.style.display = 'none';
     return;
@@ -93,7 +95,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Ar
   } catch (err) {
     scorecard.style.display = 'none';
   }
-})();
+}
+render();
+// Email taps land here with only the #fragment differing — the browser reuses
+// the tab without reloading, so re-render on every hash change.
+window.addEventListener('hashchange', render);
 </script>
 </body>
 </html>
