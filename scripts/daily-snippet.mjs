@@ -122,14 +122,33 @@ function card(title, inner, accent = BLUE) {
     ${inner}</div>`;
 }
 
-const optRow = (label, text) =>
-  `<div class="opt txt" style="padding:6px 10px;margin:4px 0;${bg(CLOUD)}border:1px solid ${SILVER};border-radius:6px;font-size:14px;color:${TEXT};"><strong class="navy" style="color:${NAVY};">${label}.</strong> ${esc(text)}</div>`;
+// Instant-answer links: each option carries its verdict + explanation to the
+// static results page (daily.html) in the URL fragment — no backend needed.
+const RESULT_URL = SITE_URL.replace(/[^/]*$/, '') + 'daily.html';
 
-function quizBlock(q, idx, showBrand) {
+function resultLink(q, pickIdx, n, total) {
+  const params = new URLSearchParams({
+    d: String(dayNum), n: String(n), t: String(total),
+    p: String(pickIdx), c: String(q.c),
+    b: q.brand || '', q: q.q, e: q.e || q.o[q.c],
+  });
+  return `${RESULT_URL}#${params.toString()}`;
+}
+
+const optRow = (label, text, href) => {
+  const style = `display:block;padding:6px 10px;margin:4px 0;${bg(CLOUD)}border:1px solid ${SILVER};border-radius:6px;font-size:14px;color:${TEXT};text-decoration:none;`;
+  const inner = `<strong class="navy" style="color:${NAVY};">${label}.</strong> ${esc(text)}`;
+  return href
+    ? `<a class="opt txt" href="${href.replace(/&/g, '&amp;')}" style="${style}">${inner}</a>`
+    : `<div class="opt txt" style="${style}">${inner}</div>`;
+};
+
+// n/total wire up the tap-for-instant-answer links; omit for a plain block.
+function quizBlock(q, idx, showBrand, n, total) {
   const brandTag = showBrand ? ` <span class="muted" style="font-weight:400;color:${STEEL};">(${esc(q.brand)})</span>` : '';
   return `<div style="margin:0 0 14px;">
     <div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">Q${idx + 1}${brandTag} — ${esc(q.q)}</div>
-    ${q.o.map((o, i) => optRow(letters[i], o)).join('')}</div>`;
+    ${q.o.map((o, i) => optRow(letters[i], o, n ? resultLink(q, i, n, total) : undefined)).join('')}</div>`;
 }
 
 const objectionBox = (ob) =>
@@ -156,14 +175,15 @@ if (isExamDay) {
   headline = 'Weekly General Exam';
 
   sections.push(card('This week’s exam',
-    `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;">Eight questions across the whole range, plus one scenario. No notes, no peeking — answers at the bottom. Score yourself out of 9.</div>`, NAVY));
+    `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;">Eight questions across the whole range, plus one scenario. Tap an answer to see instantly whether you got it right — it keeps your score for the day. (Answers are also at the bottom.)</div>`, NAVY));
 
-  sections.push(card('Questions', exam.map((q, i) => quizBlock(q, i, true)).join('')));
+  const TOTAL = exam.length + 1;
+  sections.push(card('Questions', exam.map((q, i) => quizBlock(q, i, true, i + 1, TOTAL)).join('')));
 
   sections.push(card(`Scenario — ${esc(scenario.brand)}`,
     `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;margin-bottom:8px;">${esc(scenario.scenario)}</div>
      <div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">${esc(scenario.q)}</div>
-     ${scenario.o.map((o, i) => optRow(letters[i], o)).join('')}`));
+     ${scenario.o.map((o, i) => optRow(letters[i], o, resultLink(scenario, i, TOTAL, TOTAL))).join('')}`));
 
   sections.push(card('Answers',
     exam.map((q, i) => answerLine(`Q${i + 1}`, q)).join('') + answerLine('Scenario', scenario), '#2E8B57'));
@@ -208,7 +228,8 @@ if (isExamDay) {
     sections.push(card('Objection handling', objections.map(objectionBox).join('')));
   }
 
-  sections.push(card(`Quick quiz — ${esc(focus.name)} only`, quiz.map((q, i) => quizBlock(q, i, false)).join('')));
+  sections.push(card(`Quick quiz — ${esc(focus.name)} only. Tap an answer to check it instantly`,
+    quiz.map((q, i) => quizBlock(q, i, false, i + 1, quiz.length)).join('')));
 
   if (flashcard) {
     sections.push(card('One to remember',

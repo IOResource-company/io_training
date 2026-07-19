@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IO Resource — Daily Training Answer</title>
+<style>
+:root{--navy:#09246B;--blue:#0073E6;--tint:#E6F1FD;--steel:#5A6B7C;--silver:#D7DCE3;--cloud:#F4F6F9;--text:#1B2433;--green:#2E8B57;--green-bg:#eaf6ef;--red:#C0392B;--red-bg:#fbecea;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--cloud);color:var(--text);line-height:1.6;min-height:100vh;}
+.hdr{background:linear-gradient(135deg,var(--navy),#3A5089);color:#fff;padding:1.1rem 1.25rem;}
+.hdr .t{font-size:1.05rem;font-weight:700;}
+.hdr .t span{color:var(--blue);}
+.wrap{max-width:560px;margin:0 auto;padding:1.25rem 1rem 2rem;}
+.card{background:#fff;border:1px solid var(--silver);border-radius:10px;padding:1.4rem 1.3rem;margin-bottom:1rem;box-shadow:0 1px 6px rgba(9,36,107,.06);}
+.verdict{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;}
+.badge{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:700;flex:0 0 auto;}
+.ok .badge{background:var(--green-bg);color:var(--green);}
+.no .badge{background:var(--red-bg);color:var(--red);}
+.vt{font-size:1.15rem;font-weight:700;}
+.ok .vt{color:var(--green);}
+.no .vt{color:var(--red);}
+.vs{font-size:.85rem;color:var(--steel);}
+.qtext{font-size:.92rem;font-weight:600;color:var(--navy);margin-bottom:.7rem;}
+.exp{background:var(--tint);border-radius:8px;padding:.85rem 1rem;font-size:.9rem;}
+.exp b{color:var(--navy);}
+.score{display:flex;align-items:center;justify-content:space-between;gap:.75rem;}
+.score .n{font-size:1.35rem;font-weight:700;color:var(--navy);}
+.score .l{font-size:.8rem;color:var(--steel);}
+.bar{flex:1;height:8px;background:var(--silver);border-radius:4px;overflow:hidden;margin:0 .35rem;}
+.bar i{display:block;height:100%;background:var(--blue);border-radius:4px;}
+.next{font-size:.88rem;color:var(--steel);text-align:center;margin:1.1rem 0 .9rem;}
+.btn{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;padding:.7rem 1rem;border-radius:8px;}
+.tag{font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--steel);text-align:center;margin-top:1.1rem;}
+.repeat{font-size:.78rem;color:var(--steel);margin-top:.5rem;font-style:italic;}
+</style>
+</head>
+<body>
+<div class="hdr"><div class="t">IO<span>Resource</span> — Daily Training</div></div>
+<div class="wrap">
+  <div class="card" id="result"></div>
+  <div class="card" id="scorecard"></div>
+  <p class="next">Head back to the email for the next question.</p>
+  <a class="btn" href="IOR-Product-Training.html">Open the full training app</a>
+  <div class="tag">Supply. Configure. Support.</div>
+</div>
+<script>
+(function () {
+  const P = new URLSearchParams(location.hash.slice(1));
+  const d = P.get('d'), n = +P.get('n'), t = +P.get('t'),
+        p = +P.get('p'), c = +P.get('c'),
+        brand = P.get('b') || '', q = P.get('q') || '', e = P.get('e') || '';
+  const L = ['A', 'B', 'C', 'D'];
+  const ok = p === c;
+  const result = document.getElementById('result');
+  const scorecard = document.getElementById('scorecard');
+
+  if (!P.has('n')) {
+    result.innerHTML = '<div class="qtext">This page shows instant answers for the daily training email.</div><div class="exp">Tap an answer in today’s email to see whether you got it right.</div>';
+    scorecard.style.display = 'none';
+    return;
+  }
+
+  result.className = 'card ' + (ok ? 'ok' : 'no');
+  result.innerHTML =
+    '<div class="verdict"><div class="badge">' + (ok ? '✓' : '✗') + '</div>' +
+    '<div><div class="vt">' + (ok ? 'Correct' : 'Not quite') + '</div>' +
+    '<div class="vs">You picked ' + L[p] + (ok ? '' : ' — the answer is ' + L[c]) + (brand ? ' · ' + brand : '') + '</div></div></div>' +
+    (q ? '<div class="qtext">Q' + n + '. ' + q + '</div>' : '') +
+    '<div class="exp"><b>' + L[c] + '.</b> ' + (e || 'See the full training app for the detail.') + '</div>';
+
+  // Running score for the day (first attempt per question counts).
+  let repeatNote = '';
+  try {
+    const key = 'iorDaily-' + d;
+    const state = JSON.parse(localStorage.getItem(key) || '{"answers":{}}');
+    if (state.answers[n] === undefined) {
+      state.answers[n] = p;
+      localStorage.setItem(key, JSON.stringify(state));
+    } else if (state.answers[n] !== p) {
+      repeatNote = '<div class="repeat">Already answered — your first attempt (' + L[state.answers[n]] + ') is the one on the scoreboard.</div>';
+    }
+    const key2 = 'iorDailyOK-' + d;
+    const okState = JSON.parse(localStorage.getItem(key2) || '{}');
+    if (okState[n] === undefined) okState[n] = ok;
+    localStorage.setItem(key2, JSON.stringify(okState));
+    const score = Object.values(okState).filter(Boolean).length;
+    const done = Object.keys(okState).length;
+    scorecard.innerHTML =
+      '<div class="score"><div><div class="n">' + score + '/' + done + '</div><div class="l">correct so far</div></div>' +
+      '<div class="bar"><i style="width:' + (t ? Math.round(100 * done / t) : 0) + '%"></i></div>' +
+      '<div><div class="n">' + done + '/' + (t || '?') + '</div><div class="l">answered today</div></div></div>' + repeatNote;
+  } catch (err) {
+    scorecard.style.display = 'none';
+  }
+})();
+</script>
+</body>
+</html>
