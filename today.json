@@ -1,9 +1,33 @@
 {
- "d": 20653,
+ "d": 20654,
  "mode": "study",
  "brand": "Honeywell",
- "date": "Sunday 19 July 2026",
+ "date": "Monday 20 July 2026",
  "questions": [
+  {
+   "q": "What type of scanner is the Honeywell Orbit (MS7120 / 7190g)?",
+   "o": [
+    "Ultra-rugged handheld",
+    "Hands-free presentation scanner",
+    "Wearable ring scanner",
+    "Fixed industrial laser tunnel"
+   ],
+   "c": 1,
+   "e": "The Orbit is a hands-free presentation scanner for fixed-position checkouts; the 7190g is the modern 1D/2D hybrid.",
+   "brand": "Honeywell"
+  },
+  {
+   "q": "A customer needs to read barcodes off customers' phone screens. Which Honeywell scanner is NOT suitable?",
+   "o": [
+    "Voyager 1400g",
+    "Voyager 1472g",
+    "Voyager 1200g (single-line laser)",
+    "Xenon 1950g"
+   ],
+   "c": 2,
+   "e": "The 1200g is a 1D single-line laser and reads printed codes only. Phone screens need a 2D area imager.",
+   "brand": "Honeywell"
+  },
   {
    "q": "Which Honeywell family is the ultra-rugged, IP65 industrial scanner for warehouse and manufacturing?",
    "o": [
@@ -14,30 +38,6 @@
    ],
    "c": 1,
    "e": "Granit (e.g. 1990i/1991i) is IP65-sealed, drop-rated and reads damaged/dirty labels; the XR variant adds extended range.",
-   "brand": "Honeywell"
-  },
-  {
-   "q": "Which Honeywell handheld is the lowest-cost entry point for 1D retail POS scanning?",
-   "o": [
-    "Voyager 1200g",
-    "Granit 1991i",
-    "Xenon 1950g",
-    "HF680"
-   ],
-   "c": 0,
-   "e": "The Voyager 1200g is an entry-level single-line 1D laser — lightweight, USB plug-and-play, the cheapest handheld in the range.",
-   "brand": "Honeywell"
-  },
-  {
-   "q": "For IO Resource, what does the Honeywell brand almost entirely consist of?",
-   "o": [
-    "Label printers",
-    "Barcode scanners (and some mobile computers)",
-    "Tablets and rugged laptops",
-    "Receipt printers and cash drawers"
-   ],
-   "c": 1,
-   "e": "IOR's Honeywell business is ~100% barcode scanners, with a small amount of mobile-computer and accessory volume.",
    "brand": "Honeywell"
   }
  ]
