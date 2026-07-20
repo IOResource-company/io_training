@@ -2,8 +2,11 @@ name: Daily training snippet
 
 on:
   schedule:
-    # 07:15 UTC = 08:15 Irish summer time / 07:15 winter
+    # Primary: 07:15 UTC = 08:15 Irish summer time / 07:15 winter.
+    # Retry: 08:45 UTC — GitHub cron is best-effort and sometimes skips a slot;
+    # the sent-today guard below makes a double-send impossible.
     - cron: '15 7 * * *'
+    - cron: '45 8 * * *'
   workflow_dispatch: {}
 
 permissions:
@@ -17,7 +20,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Skip if already sent today
+        id: guard
+        run: |
+          if [ "$(cat last-sent.txt 2>/dev/null)" = "$(date -u +%F)" ]; then
+            echo "sent=true" >> "$GITHUB_OUTPUT"
+            echo "Already sent today — nothing to do."
+          else
+            echo "sent=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Publish today's quiz data (before the email lands)
+        if: steps.guard.outputs.sent == 'false'
         run: |
           node scripts/daily-snippet.mjs --dry-run
           git config user.name "github-actions"
@@ -25,6 +38,16 @@ jobs:
           git add today.json
           git diff --cached --quiet || { git commit -m "today.json $(date -u +%F)"; git push; }
       - name: Send today's snippet
+        if: steps.guard.outputs.sent == 'false'
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: node scripts/daily-snippet.mjs
+      - name: Mark sent
+        if: steps.guard.outputs.sent == 'false'
+        run: |
+          date -u +%F > last-sent.txt
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add last-sent.txt
+          git commit -m "sent $(date -u +%F)"
+          git push
