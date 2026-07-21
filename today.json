@@ -1,44 +1,44 @@
 {
- "d": 20654,
+ "d": 20655,
  "mode": "study",
- "brand": "Honeywell",
- "date": "Monday 20 July 2026",
+ "brand": "Aures",
+ "date": "Tuesday 21 July 2026",
  "questions": [
   {
-   "q": "What type of scanner is the Honeywell Orbit (MS7120 / 7190g)?",
+   "q": "What is IO Resource's single best-selling Aures product by revenue?",
    "o": [
-    "Ultra-rugged handheld",
-    "Hands-free presentation scanner",
-    "Wearable ring scanner",
-    "Fixed industrial laser tunnel"
-   ],
-   "c": 1,
-   "e": "The Orbit is a hands-free presentation scanner for fixed-position checkouts; the 7190g is the modern 1D/2D hybrid.",
-   "brand": "Honeywell"
-  },
-  {
-   "q": "A customer needs to read barcodes off customers' phone screens. Which Honeywell scanner is NOT suitable?",
-   "o": [
-    "Voyager 1400g",
-    "Voyager 1472g",
-    "Voyager 1200g (single-line laser)",
-    "Xenon 1950g"
+    "Sango 15\" terminal",
+    "Komet 27\" kiosk",
+    "Yuno II 15.6\" (i3 Tiger Lake)",
+    "ODP 333 receipt printer"
    ],
    "c": 2,
-   "e": "The 1200g is a 1D single-line laser and reads printed codes only. Phone screens need a 2D area imager.",
-   "brand": "Honeywell"
+   "e": "The Yuno II 15.6\" Tiger Lake i3 is ~80% of all IOR Aures revenue (~694 units). Lead with it.",
+   "brand": "Aures"
   },
   {
-   "q": "Which Honeywell family is the ultra-rugged, IP65 industrial scanner for warehouse and manufacturing?",
+   "q": "A customer has an ageing TRX-3000 estate. What is IOR's recommended path?",
    "o": [
-    "Orbit",
-    "Granit",
-    "Eclipse",
-    "Genesis"
+    "Keep buying TRX-3000 indefinitely",
+    "Switch to NCR enterprise",
+    "Migrate to Yuno II as the direct successor",
+    "Move everything to Android tablets"
+   ],
+   "c": 2,
+   "e": "TRX-3000 is legacy with thinning parts availability. Yuno II is the same family with current CPUs, NVMe and Windows 11 IoT — the easy upgrade.",
+   "brand": "Aures"
+  },
+  {
+   "q": "What makes the ODP 333 receipt printer suited to kitchens and bars?",
+   "o": [
+    "It is battery powered",
+    "It has a front paper exit and splash-proof cubic design",
+    "It prints in colour",
+    "It is the cheapest printer available"
    ],
    "c": 1,
-   "e": "Granit (e.g. 1990i/1991i) is IP65-sealed, drop-rated and reads damaged/dirty labels; the XR variant adds extended range.",
-   "brand": "Honeywell"
+   "e": "The ODP 333's front receipt exit and cubic body resist dust, crumbs and splashes; it also has a triple interface and Energy Star certification.",
+   "brand": "Aures"
   }
  ]
 }
