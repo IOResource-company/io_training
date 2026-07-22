@@ -2,7 +2,7 @@
 
 ## Positioning (who they are)
 
-Datalogic is an Italian AIDC (Automatic Identification & Data Capture) manufacturer that does **one thing — scanning — and does it globally at the top of the market.** They are a market leader in retail fixed/presentation scanning, around #2 in handheld scanning, and a strong player in mobile computing. They explicitly do **not** make printers and have no plans to; they stay focused on scanning and partner with print vendors. Their four focus verticals are **retail (biggest), transport & logistics, manufacturing, and healthcare.**
+Datalogic is an Italian AIDC (Automatic Identification & Data Capture) specialist with one unifying discipline: **everything they make captures data — nothing prints it.** The portfolio spans five pillars: **fixed retail scanners** (the Magellan family — **#1 global market leader in both bioptic and single-plane scanners**, plus the 900i/1500i presentation scanners and GFS4500 OEM/kiosk engines), **handheld scanners** (QuickScan, Gryphon, PowerScan — around #2 globally), **mobile computers** (Memor rugged Android PDAs, Skorpio keyed/pistol-grip, Joya Smart self-shopping), **stationary industrial scanners** (Matrix 320, AV900), and **sensors, safety & machine vision** for factory automation. Scale: roughly 2,900 employees, $520M global sales, 30 offices worldwide, 1,200+ patents. They explicitly do **not** make printers and have no plans to; they partner with print vendors instead. Their four focus verticals are **retail (biggest), transport & logistics, manufacturing, and healthcare.**
 
 **IO Resource is a Datalogic Platinum Partner for UK & Ireland (agreement signed 2026).** Datalogic sells only through the channel — there is always a partner in the middle — which fits IOR's arm's-length, value-add distribution model. The McDonald's self-service kiosk scanner, for example, is typically a Datalogic unit.
 
@@ -58,7 +58,7 @@ Total recorded Datalogic goods to date: roughly **€1,540** across ~13 units �
 ## Where it fits (verticals)
 
 - **Retail tills / service counters:** Magellan 900i (lead) and 1500i (premium) presentation scanners; QuickScan/Gryphon handhelds at the POS.
-- **Supermarket / bioptic & in-counter:** Magellan in-counter scanner range (e.g. 3410VSi/3450VSi families) for grocery checkout lanes and self-checkout integrations.
+- **Supermarket / bioptic & in-counter:** Magellan single-plane range for grocery checkout lanes and self-checkout integrations. **Note: the 3400/3500 families (incl. the 3410VSi IOR has sold) are EOL — last order 30 Sept 2026 — replaced by the new 3600/3700 generation (GA Jan 2026; migrate part numbers by changing the second digit, e.g. 3410VSi → 3610VSi).** Multiplane/bioptic lanes are the Magellan 9500i/9600i/9900i.
 - **Warehouse / T&L:** PowerScan rugged handhelds for goods-in and picking; Memor 30/35 and Skorpio X5 mobile computers with extended-range scanning.
 - **Healthcare:** Disinfectant-ready Gryphon HC handhelds and the Memor 17 HC clinical PDA (sanitisable chassis, alarm button) — though note hospital business is largely framework-driven.
 
@@ -68,7 +68,7 @@ Total recorded Datalogic goods to date: roughly **€1,540** across ~13 units �
 - **Magellan 1500i is the premium step-up.** Aluminium base and indicator strip give a polished, customer-facing finish. Use it as the up-sell where aesthetics and a premium counter image matter — Zebra has no equivalent step-up under the DS9308.
 - **Phone-screen scanning works out of the box** on both Magellans — increasingly a hard till requirement for mobile coupons and loyalty.
 - **Green Spot good-read feedback** is well-liked by operators and reduces scan errors.
-- **One vendor, one focus:** Datalogic does scanning only and leads the retail market — they are not distracted across a sprawling portfolio.
+- **One vendor, one discipline — data capture:** Datalogic makes everything that reads a barcode, from till scanner to bioptic lane to rugged Android handheld — and nothing that prints one. They are #1 globally in bioptic and single-plane retail scanners.
 - **Service-backed:** 3-year warranty on presentation scanners, 5-year on QuickScan; IOR holds stock, does in-house repairs and offers next-day delivery.
 
 ## Competitive / displacement angle — KEY SECTION
@@ -96,7 +96,7 @@ Total recorded Datalogic goods to date: roughly **€1,540** across ~13 units �
 
 - **"Zebra has the bigger software ecosystem."** True for large estates managing scanners at scale — but most retail tills never touch that tooling. What matters day-to-day is that Datalogic works out of the box: carriage return on, phone-screen scanning enabled, and more interface options (USB-HID, serial, virtual serial COM) than Zebra's USB/serial-only.
 
-- **"Is Datalogic a serious brand?"** They're the retail-scanning market leader and focus exclusively on scanning. The kiosk scanner at McDonald's is typically Datalogic. IOR is a Datalogic Platinum Partner for UK & Ireland and backs it with stock, in-house repairs and next-day delivery.
+- **"Is Datalogic a serious brand?"** They're the #1 global market leader in bioptic and single-plane retail scanners — roughly $520M in global sales, 2,900 employees and 1,200+ patents. The kiosk scanner at McDonald's is typically Datalogic. IOR is a Datalogic Platinum Partner for UK & Ireland and backs it with stock, in-house repairs and next-day delivery.
 
 - **"We need a premium look at customer-facing tills."** That's the Magellan 1500i — aluminium base and indicator strip. Zebra has no equivalent step-up under the DS9308.
 
@@ -149,9 +149,9 @@ Total recorded Datalogic goods to date: roughly **€1,540** across ~13 units �
     },
     {
       "q": "What is Datalogic's product focus and IOR's partner status?",
-      "options": ["Printers; IOR is a reseller", "Scanning only; IOR is a Datalogic Platinum Partner for UK & Ireland", "Networking; IOR is a distributor", "POS terminals; IOR has no agreement"],
+      "options": ["Printers; IOR is a reseller", "Data capture — scanners, mobile computers, machine vision, but no printers; IOR is a Datalogic Platinum Partner for UK & Ireland", "Networking; IOR is a distributor", "POS terminals; IOR has no agreement"],
       "correctIndex": 1,
-      "explanation": "Datalogic does scanning only and leads the retail-scanning market. IOR is a Datalogic Platinum Partner for UK & Ireland (signed 2026)."
+      "explanation": "Everything Datalogic makes captures data — fixed retail scanners (#1 globally in bioptic and single-plane), handhelds, mobile computers, industrial scanning and machine vision — and they make no printers. IOR is a Datalogic Platinum Partner for UK & Ireland (signed 2026)."
     }
   ],
   "flashcards": [
