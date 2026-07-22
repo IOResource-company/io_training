@@ -1,44 +1,44 @@
 {
- "d": 20655,
+ "d": 20656,
  "mode": "study",
- "brand": "Aures",
- "date": "Tuesday 21 July 2026",
+ "brand": "Datalogic",
+ "date": "Wednesday 22 July 2026",
  "questions": [
   {
-   "q": "What is IO Resource's single best-selling Aures product by revenue?",
+   "q": "Out of the box, how do the Magellans handle scanning a coupon off a customer's phone screen?",
    "o": [
-    "Sango 15\" terminal",
-    "Komet 27\" kiosk",
-    "Yuno II 15.6\" (i3 Tiger Lake)",
-    "ODP 333 receipt printer"
-   ],
-   "c": 2,
-   "e": "The Yuno II 15.6\" Tiger Lake i3 is ~80% of all IOR Aures revenue (~694 units). Lead with it.",
-   "brand": "Aures"
-  },
-  {
-   "q": "A customer has an ageing TRX-3000 estate. What is IOR's recommended path?",
-   "o": [
-    "Keep buying TRX-3000 indefinitely",
-    "Switch to NCR enterprise",
-    "Migrate to Yuno II as the direct successor",
-    "Move everything to Android tablets"
-   ],
-   "c": 2,
-   "e": "TRX-3000 is legacy with thinning parts availability. Yuno II is the same family with current CPUs, NVMe and Windows 11 IoT — the easy upgrade.",
-   "brand": "Aures"
-  },
-  {
-   "q": "What makes the ODP 333 receipt printer suited to kitchens and bars?",
-   "o": [
-    "It is battery powered",
-    "It has a front paper exit and splash-proof cubic design",
-    "It prints in colour",
-    "It is the cheapest printer available"
+    "Needs a firmware update first",
+    "Works out of the box — a common till requirement",
+    "Requires a special accessory",
+    "Cannot read screens at all"
    ],
    "c": 1,
-   "e": "The ODP 333's front receipt exit and cubic body resist dust, crumbs and splashes; it also has a triple interface and Energy Star certification.",
-   "brand": "Aures"
+   "e": "Bench-test point 2: phone-screen / mobile-coupon scanning works out of the box on Datalogic, with no reconfiguration.",
+   "brand": "Datalogic"
+  },
+  {
+   "q": "What is the default carriage-return behaviour out of the box?",
+   "o": [
+    "Off on Datalogic, on with Zebra",
+    "On with Datalogic; every Zebra customer asks how to enable it",
+    "Off on both",
+    "On with both"
+   ],
+   "c": 1,
+   "e": "Bench-test point 4: Datalogic ships with carriage return enabled by default; Zebra customers routinely have to ask how to turn it on.",
+   "brand": "Datalogic"
+  },
+  {
+   "q": "Which Datalogic scanner is the lead replacement for the Zebra DS9308?",
+   "o": [
+    "Magellan 1500i",
+    "Magellan 900i",
+    "QuickScan QD2500",
+    "PowerScan"
+   ],
+   "c": 1,
+   "e": "The Magellan 900i is the lead presentation scanner and IOR's like-for-like DS9308 replacement — what we stock and demo.",
+   "brand": "Datalogic"
   }
  ]
 }
