@@ -1,44 +1,44 @@
 {
- "d": 20656,
+ "d": 20657,
  "mode": "study",
- "brand": "Datalogic",
- "date": "Wednesday 22 July 2026",
+ "brand": "Toshiba",
+ "date": "Thursday 23 July 2026",
  "questions": [
   {
-   "q": "Out of the box, how do the Magellans handle scanning a coupon off a customer's phone screen?",
+   "q": "What device-management platform does the BV420D support, and how does it differ from Zebra?",
    "o": [
-    "Needs a firmware update first",
-    "Works out of the box — a common till requirement",
-    "Requires a special accessory",
-    "Cannot read screens at all"
+    "Zebra Print DNA, same as Zebra",
+    "SOTI Connect, which is vendor-neutral across mixed estates",
+    "No remote management",
+    "Toshiba-only proprietary tool"
    ],
    "c": 1,
-   "e": "Bench-test point 2: phone-screen / mobile-coupon scanning works out of the box on Datalogic, with no reconfiguration.",
-   "brand": "Datalogic"
+   "e": "The BV420D is SOTI Connect certified — a vendor-neutral console — versus Zebra's Zebra-only Print DNA.",
+   "brand": "Toshiba"
   },
   {
-   "q": "What is the default carriage-return behaviour out of the box?",
+   "q": "Which Toshiba BV420D variant offers a linerless option the Zebra ZD421 lacks?",
    "o": [
-    "Off on Datalogic, on with Zebra",
-    "On with Datalogic; every Zebra customer asks how to enable it",
-    "Off on both",
-    "On with both"
+    "BV420D-GS02",
+    "BV420D-TS02",
+    "BV420D-GL02",
+    "BV420D-WLAN"
    ],
-   "c": 1,
-   "e": "Bench-test point 4: Datalogic ships with carriage return enabled by default; Zebra customers routinely have to ask how to turn it on.",
-   "brand": "Datalogic"
+   "c": 2,
+   "e": "The BV420D-GL02 includes an integrated linerless cutter — useful in food, retail and QSR. The ZD421 has no linerless option.",
+   "brand": "Toshiba"
   },
   {
-   "q": "Which Datalogic scanner is the lead replacement for the Zebra DS9308?",
+   "q": "Which Zebra label printer does the Toshiba BV420D replace in the 'Kill the Zebra' strategy?",
    "o": [
-    "Magellan 1500i",
-    "Magellan 900i",
-    "QuickScan QD2500",
-    "PowerScan"
+    "Zebra ZD421(d)",
+    "Zebra ZQ610",
+    "Zebra MC3300x",
+    "Zebra DS9308"
    ],
-   "c": 1,
-   "e": "The Magellan 900i is the lead presentation scanner and IOR's like-for-like DS9308 replacement — what we stock and demo.",
-   "brand": "Datalogic"
+   "c": 0,
+   "e": "The BV420D is positioned directly against the Zebra ZD421(d), the 4-inch desktop direct-thermal printer.",
+   "brand": "Toshiba"
   }
  ]
 }
