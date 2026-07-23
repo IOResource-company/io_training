@@ -1,10 +1,10 @@
 # Toshiba — Training Brief
 
-## Positioning (who they are) — established brand, retail/logistics recognition, label-printer pillar.
+## Positioning (who they are) — established brand, retail/logistics recognition, label-printer pillar (on-request secondary).
 
-Toshiba (Toshiba TEC) is one of IO Resource's preferred, strategic brands and a long-established global name in barcode label and POS receipt printing. They design, develop and build their own hardware, which gives them a reputation for build quality and a broad, well-supported service network across Ireland, the UK and Europe.
+Toshiba (Toshiba TEC) is a long-established global name in barcode label and POS receipt printing. They design, develop and build their own hardware, which gives them a reputation for build quality and a broad, well-supported service network across Ireland, the UK and Europe.
 
-For IOR, Toshiba is one of the **two co-equal replacements for Zebra LABEL PRINTERS** — the label-printer pillar of the "Kill the Zebra" strategy, alongside Bixolon. The split is by customer fit, not vendor preference: **Toshiba leans toward retail majors, enterprise accounts, and any deal where brand recognition or service-network coverage is part of the buying decision.** Bixolon is the play where an aggressive price point is the main driver. Both are valid; the rep chooses based on the customer.
+For IOR, Toshiba is the **secondary label-printer brand** in the "Kill the Zebra" strategy. **Bixolon is the primary and the default quote on all displacement and new business.** Toshiba is quoted only where a customer specifically requests it, or where an existing Toshiba estate or a service-network requirement makes it the better fit (retail majors and enterprise accounts where brand recognition or service coverage is part of the buying decision). Don't lead with Toshiba; know it well for when the customer brings it up.
 
 Toshiba's headline competitive strengths against Zebra: faster direct-thermal print speed, Ethernet standard (not a paid option), a linerless option, ZPL emulation for drop-in migration, and vendor-neutral SOTI Connect device management.
 
@@ -77,7 +77,7 @@ Takeaway: desktop label printers (B-FV4 legacy + BV420D current) are the Toshiba
 - *"Zebra has more memory."* True — ZD421 ships 512 MB Flash / 256 MB SDRAM vs the BV420D's 128 MB / 128 MB. That matters only for very large on-device font libraries or extensive stored formats. Standard retail, logistics and healthcare labelling never approaches that limit.
 - *"Is Toshiba a real alternative or a budget brand?"* Toshiba is an established global manufacturer that designs and builds its own printers, with a wide European service network. This is the enterprise/retail-major choice, not a budget compromise.
 - *"What about healthcare-grade power or a battery?"* Zebra offers IEC 60601-certified and battery ZD421 variants. If a deployment specifically needs medical-grade power certification or untethered portable printing, flag it — otherwise the BV420D covers standard healthcare desktop labelling.
-- *"Why Toshiba and not Bixolon?"* Both are our valid Zebra label replacements. Toshiba for retail majors, enterprise accounts, and where brand/service-network coverage matters; Bixolon where price is the deciding factor. Match to the customer.
+- *"Why Toshiba and not Bixolon?"* Bixolon is IOR's primary label-printer brand and the default quote. Toshiba comes in only when the customer specifically asks for it, or when an existing Toshiba estate or service-network requirement makes it the better fit — then it's a strong, well-supported answer.
 
 ## Competitive / displacement angle — THE KEY SECTION
 
@@ -86,10 +86,10 @@ Takeaway: desktop label printers (B-FV4 legacy + BV420D current) are the Toshiba
 - **Spec wins over the ZD421**: 7 ips DT (vs 6 ips) — ~17% faster; **Ethernet standard** (vs paid option on Zebra); a **linerless option** (BV420D-GL02 integrated cutter) the ZD421 doesn't offer; and **SOTI Connect** vendor-neutral device management vs Zebra's Zebra-only Print DNA.
 - **Technical parity = low migration risk**: same **BarTender** label-design workflow, and **ZPL emulation** (plus DPL/SBPL). Migrating off a Zebra is a **driver reinstall + a config step, not a workflow rebuild**. Existing label formats and middleware carry across.
 - **Build-quality angle**: Zebra's ZD-series has known reliability issues since the GK420 platform move — clip breakage and roller-spring alignment problems are reported in the field. Toshiba, building its own hardware, is the more robust choice — a real argument in higher-duty environments.
-- **When to lead with Toshiba vs Bixolon** (both valid — choice is customer-fit, not vendor preference):
-  - **Toshiba** → retail majors, enterprise accounts, and deals where brand recognition or service-network coverage is part of the decision.
-  - **Bixolon** → where an aggressive price point is the primary driver.
-- **Asset**: the customer-facing **"Toshiba BV420D vs Zebra ZD421" comparison guide is already live on the IOR website** — lead with it, or send it as a follow-up.
+- **The hierarchy** (updated Jul 2026):
+  - **Bixolon** → the primary and the default quote on every displacement and new-business label-printer deal.
+  - **Toshiba** → quoted only on explicit customer request, or where an existing Toshiba estate / service-network requirement applies (typically retail majors and enterprise accounts).
+- **Asset**: the customer-facing **"Toshiba BV420D vs Zebra ZD421" comparison guide stays live on the IOR website** — it catches request-led Toshiba demand; use it when Toshiba is in play.
 
 | Spec | Toshiba BV420D | Zebra ZD421 |
 |---|---|---|
@@ -138,10 +138,10 @@ Takeaway: desktop label printers (B-FV4 legacy + BV420D current) are the Toshiba
       "explanation": "The BV420D-GL02 includes an integrated linerless cutter — useful in food, retail and QSR. The ZD421 has no linerless option."
     },
     {
-      "q": "When should a rep lead with Toshiba rather than Bixolon for a Zebra label-printer replacement?",
-      "options": ["When the lowest possible price is the main driver", "When the customer is a retail major or enterprise account where brand recognition and service coverage matter", "Whenever the customer mentions Zebra", "Only for receipt printers"],
+      "q": "When does Toshiba get quoted on a Zebra label-printer replacement?",
+      "options": ["On every deal, alongside Bixolon", "Only when the customer specifically requests Toshiba, or an existing Toshiba estate / service-network requirement makes it the better fit", "Whenever the customer mentions Zebra", "Whenever the deal is price-led"],
       "correctIndex": 1,
-      "explanation": "Toshiba leads for retail majors, enterprise accounts and where brand/service-network coverage matters; Bixolon leads where price is the driver. Both are valid Zebra replacements."
+      "explanation": "Bixolon is the primary and the default quote on all displacement and new business. Toshiba is the on-request secondary — customer asks for it, or a Toshiba estate / service-network requirement is in scope."
     },
     {
       "q": "What device-management platform does the BV420D support, and how does it differ from Zebra?",
@@ -159,7 +159,7 @@ Takeaway: desktop label printers (B-FV4 legacy + BV420D current) are the Toshiba
   "flashcards": [
     {
       "front": "Toshiba's role in 'Kill the Zebra'",
-      "back": "One of two co-equal Zebra LABEL-PRINTER replacements (with Bixolon). Toshiba for retail majors / enterprise / brand & service-coverage deals; Bixolon for price-led deals."
+      "back": "Secondary label-printer brand, quoted on request only. Bixolon is the primary and the default on all displacement and new business; Toshiba comes in when the customer asks for it or a Toshiba estate / service-network requirement applies."
     },
     {
       "front": "BV420D vs ZD421 — the headline speed number",
@@ -184,18 +184,18 @@ Takeaway: desktop label printers (B-FV4 legacy + BV420D current) are the Toshiba
   ],
   "scenarios": [
     {
-      "scenario": "A national grocery retailer with multiple Zebra ZD421 printers in back-of-house wants to standardise its label fleet but is worried about re-doing all its label formats.",
-      "q": "What's the strongest opening pitch?",
-      "options": ["Tell them to keep Zebra to avoid disruption", "Lead with the BV420D: ZPL II emulation keeps their BarTender formats, Ethernet is standard, it's faster, and Toshiba brand/service coverage suits a retail major", "Offer the cheapest Bixolon regardless of fit", "Suggest they wait for a new model"],
+      "scenario": "A national grocery retailer with multiple Zebra ZD421 printers in back-of-house wants to move off Zebra, already runs Toshiba kit at its distribution centres, and asks specifically whether IOR can supply and support Toshiba.",
+      "q": "What's the strongest response?",
+      "options": ["Tell them to keep Zebra to avoid disruption", "Quote the BV420D: the existing Toshiba estate and service-network requirement make it the right fit — ZPL II emulation keeps their BarTender formats, Ethernet is standard, and it's faster than the ZD421", "Refuse and insist on Bixolon — it's the default", "Suggest they wait for a new model"],
       "correctIndex": 1,
-      "explanation": "A retail major where brand and service coverage matter is the textbook Toshiba lead. ZPL emulation removes the format-rewrite fear and the BV420D wins on speed and standard Ethernet."
+      "explanation": "This is exactly when Toshiba gets quoted: the customer asked for it and an existing Toshiba estate / service-network requirement is in scope. ZPL emulation removes the format-rewrite fear and the BV420D wins on speed and standard Ethernet."
     },
     {
-      "scenario": "A small print bureau wants to replace two ageing Zebra desktops and the buying decision is almost entirely about getting the lowest unit price.",
+      "scenario": "A small print bureau wants to replace two ageing Zebra desktops. They have no brand preference and haven't mentioned Toshiba.",
       "q": "Which IOR Zebra label replacement should the rep lead with?",
-      "options": ["Toshiba BV420D, always", "Bixolon, because aggressive price point is the driver here", "Zebra again", "A Toshiba industrial BA400"],
+      "options": ["Toshiba BV420D, always", "Bixolon — it's the default on all displacement and new business", "Zebra again", "A Toshiba industrial BA400"],
       "correctIndex": 1,
-      "explanation": "Both Toshiba and Bixolon are valid Zebra label replacements; when price is the primary driver, Bixolon is the lead. Toshiba is reserved for retail majors/enterprise/brand-led deals."
+      "explanation": "Bixolon is the primary label-printer brand and the default quote. Toshiba only enters the conversation when the customer requests it or a Toshiba estate / service-network requirement applies — neither is true here."
     },
     {
       "scenario": "A logistics customer evaluating the BV420D pushes back that 'Zebra has four times the memory'.",

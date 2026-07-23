@@ -22,7 +22,7 @@ This table is the heart of the brief. If you remember one thing, remember this: 
 | Zebra product | IOR replacement | Why (one line) |
 |---|---|---|
 | DS9308 | Datalogic Magellan 900i (premium step-up: Magellan 1500i) | Faster trigger, scans off phone screens, on-device config, carriage-return enabled by default |
-| ZD421d | Bixolon XD5-40 **or** Toshiba BV420D | Faster direct thermal, ZPL emulation = drop-in, more robust build; Bixolon = price-led, Toshiba = enterprise/brand-recognition |
+| ZD421d | Bixolon XD5-40 (default); Toshiba BV420D on request only | Faster direct thermal, ZPL emulation = drop-in, more robust build; Bixolon is the default quote — Toshiba only on customer request / existing Toshiba estate |
 | ZD510 (healthcare wristband) | Bixolon equivalent (to be confirmed) | Wristband-capable healthcare printer; specific model to be confirmed — flag to product team |
 | ZQ610 (mobile printer) | Urovo mobile printer (SP319 / SP409) | Mobile label/receipt printing; **caveat: ZPL needs SDK work — pre-qualify before quoting** |
 | TC15/16, TC21/22 | Urovo RT40 / DT40 | Current-generation Android handheld at the light-retail / entry tier |
@@ -61,7 +61,7 @@ IOR can reference Zebra product names in plain text for identification and compa
       "q": "A customer runs Zebra ZD421d 4-inch desktop label printers and wants the lowest delivered price. Which replacement leads?",
       "options": ["Bixolon XD5-40", "Toshiba BV420D", "Urovo DT40", "Datalogic Magellan 1500i"],
       "correctIndex": 0,
-      "explanation": "For the ZD421d, both Bixolon XD5-40 and Toshiba BV420D are valid. Bixolon is the price-led option; Toshiba is positioned for enterprise / brand-recognition deals."
+      "explanation": "The Bixolon XD5-40 is the default ZD421d replacement on all displacement and new business. Toshiba BV420D is quoted only on explicit customer request or where an existing Toshiba estate applies."
     },
     {
       "q": "A warehouse uses Zebra MC9300 full-rugged mobile computers. What does IOR replace them with?",
@@ -107,7 +107,7 @@ IOR can reference Zebra product names in plain text for identification and compa
     },
     {
       "front": "Zebra ZD421d → ?",
-      "back": "Bixolon XD5-40 (price-led) OR Toshiba BV420D (enterprise/brand). Both emulate ZPL = drop-in."
+      "back": "Bixolon XD5-40 — the default. Toshiba BV420D only if the customer asks for it or runs a Toshiba estate. Both emulate ZPL = drop-in."
     },
     {
       "front": "Zebra ZQ610 mobile printer → ?",

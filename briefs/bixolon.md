@@ -1,10 +1,10 @@
 # Bixolon — Training Brief
 
-## Positioning (who they are) — Korean, receipt + label + mobile printing, strong print speed & connectivity, label-printer pillar (price-led).
+## Positioning (who they are) — Korean, receipt + label + mobile printing, strong print speed & connectivity, PRIMARY label-printer brand.
 
 Bixolon is a South Korean manufacturer of thermal receipt printers, label printers, and mobile/portable printers. It spun out of Samsung's printing division and is a long-established, globally respected POS and AIDC print brand. Its hallmarks are fast print speeds, broad connectivity (USB, Serial, Ethernet, dual-band Wi-Fi, Bluetooth) and a wide, well-documented driver/SDK ecosystem (Windows, Linux/macOS CUPS, Android, iOS, OPOS/JPOS, plus BarTender UltraLite for BIXOLON).
 
-For IOR, Bixolon is **not a cold start** — it is an existing, live brand with an established baseline of receipt-printer business (the SRP receipt and SRP-S300 linerless lines have been selling steadily). Strategically, Bixolon is one of IOR's **two co-equal replacements for Zebra LABEL PRINTERS** — the label-printer pillar of "Kill the Zebra," alongside Toshiba. Within that pillar Bixolon is the **aggressive-price-point primary for the Zebra ZD421 installed base**: lead with Bixolon where commercial/price pressure is the deciding factor.
+For IOR, Bixolon is **not a cold start** — it is an existing, live brand with an established baseline of receipt-printer business (the SRP receipt and SRP-S300 linerless lines have been selling steadily). Strategically, Bixolon is IOR's **primary replacement for Zebra LABEL PRINTERS** and the **default on all displacement and new business** — lead with Bixolon on every label-printer deal. Toshiba is the on-request secondary, quoted only where the customer specifically asks for it or an existing Toshiba estate / service-network requirement applies.
 
 ## Product line (key SKUs) — for each: model, what it is, specs that matter, use-case.
 
@@ -43,7 +43,7 @@ Read: the installed Bixolon baseline today is a **receipt/linerless business**; 
 - **Trusted brand, already in the building.** IOR has a proven receipt/linerless track record with Bixolon; the label line extends a relationship customers already know.
 - **Open device management.** SOTI Connect (the MDM most resellers already run for Android handhelds) plus Bixolon's own XPM/XCM — no proprietary-only lock-in, no paid support contract required just to operate the fleet.
 - **Connectivity breadth.** Dual-band 2.4/5 GHz Wi-Fi, Bluetooth, Ethernet, Serial and USB across one simple line-up (XD5-40d vs XD5-40t — one decision).
-- **Aggressive landed cost.** Bixolon is IOR's price-led label pillar — lead with it when commercial pressure is the driver.
+- **The default quote.** Bixolon is IOR's primary label-printer brand — lead with it on every displacement and new-business deal. Its aggressive landed cost is a bonus, not the qualifier. Toshiba only enters on explicit customer request or an existing Toshiba estate.
 
 ## Common objections + answers
 
@@ -59,7 +59,7 @@ Read: the installed Bixolon baseline today is a **receipt/linerless business**; 
 - **PROVEN at Intact.** In IOR's own bench test, an XD5-40 was driven live from **Intact Xline** — the direct-to-port ZPL workflow most of our reseller installed base runs — in place of a Zebra unit. The driver self-installed on plug-in, it auto-sensed ZPL on the port, **printed perfectly with zero configuration**, and was the fastest of the three. This is the headline proof point.
 - **Technical parity / easy transition.** Same BarTender / label-design workflow and the same ZPL data stream. For most software (anything printing through the standard Windows driver) it behaves identically; transition is a **driver reinstall plus a config step, not a workflow rebuild**.
 - **Build-quality angle (now photo-evidenced).** The Zebra ZD-series has a known weakness since the design change away from the GK420: spring-loaded roll holders drive a small, flimsy central cog that jumps alignment when rolls are slammed in, causing permanently offset printing — plus the clip breakage IOR already sees in service/RMA. The XD5-40's cushioned holders and sturdier cogs are more robust. IOR has its own bench photos of both.
-- **When to lead with Bixolon vs Toshiba — both valid, customer-fit choice.** Lead with **Bixolon where aggressive price is the driver and commercial pressure is high** — and, per the bench test, **wherever the customer's software prints direct-to-port ZPL** (Intact and most POS estates), because the XD5-40 is a true drop-in there. Lead with **Toshiba for retail majors / enterprise / brand recognition**, or where printing runs through the Windows driver and the Toshiba brand/service network matters. Pre-qualify every displacement deal by asking whether the customer prints via the Windows driver or direct-to-port — it is the single gating question.
+- **The hierarchy (updated Jul 2026).** **Lead with Bixolon on every label-printer deal** — it is the primary and the default on all displacement and new business. **Toshiba is quoted only on explicit customer request** or where an existing Toshiba estate / service-network requirement applies. Still pre-qualify every displacement deal by asking whether the customer prints via the Windows driver or direct-to-port ZPL — it shapes the deployment plan (direct-to-port estates like Intact are a proven zero-config drop-in).
 - **Comparison guide is live.** A customer-facing **"Bixolon XD5-40 vs Zebra ZD421"** comparison guide is already published on the IOR website — use it in the conversation.
 
 ## Quiz seeds
@@ -70,13 +70,13 @@ Read: the installed Bixolon baseline today is a **receipt/linerless business**; 
     {
       "q": "What is the Bixolon XD5-40's role in the 'Kill the Zebra' strategy?",
       "options": [
-        "A co-equal label-printer replacement for the Zebra ZD421, led on aggressive price",
+        "The primary label-printer replacement for the Zebra ZD421 — the default on all displacement and new business",
         "A scanner replacement for the Zebra DS9308",
         "A handheld computer replacing the Zebra TC52",
         "A mobile printer with no displacement role"
       ],
       "correctIndex": 0,
-      "explanation": "Bixolon is one of IOR's two co-equal Zebra label-printer replacements (with Toshiba); the XD5-40 is the price-led primary for the ZD421 installed base."
+      "explanation": "Bixolon is IOR's primary Zebra label-printer replacement; the XD5-40 is the default quote for the ZD421 installed base. Toshiba is the on-request secondary."
     },
     {
       "q": "How does the XD5-40d's direct-thermal speed at 203 dpi compare to the Zebra ZD421?",
@@ -134,15 +134,15 @@ Read: the installed Bixolon baseline today is a **receipt/linerless business**; 
       "explanation": "Spring-loaded holders drive a small central cog that jumps alignment when rolls slam in, causing offset printing and clip breakage — now photo-evidenced on IOR's bench."
     },
     {
-      "q": "When should a rep lead with Bixolon over Toshiba for a ZD421 displacement?",
+      "q": "When should a rep lead with Bixolon for a ZD421 displacement?",
       "options": [
-        "Where aggressive price drives the deal and the software prints direct-to-port ZPL",
-        "For every large enterprise retail major",
-        "Only where brand recognition is the top priority",
+        "On every deal — it's the default; Toshiba is quoted only on explicit customer request or an existing Toshiba estate",
+        "Only where aggressive price drives the deal",
+        "Only where the software prints direct-to-port ZPL",
         "Never — Toshiba is always preferred"
       ],
       "correctIndex": 0,
-      "explanation": "Bixolon leads on price-led deals and direct-to-port ZPL estates (true drop-in); Toshiba leads for enterprise/brand-recognition or Windows-driver environments."
+      "explanation": "Bixolon is the primary and the default on all displacement and new business. Toshiba enters only when the customer specifically requests it or a Toshiba estate / service-network requirement applies."
     },
     {
       "q": "Which Bixolon model should NOT be positioned as the ZD421 displacement product?",
@@ -159,7 +159,7 @@ Read: the installed Bixolon baseline today is a **receipt/linerless business**; 
   "flashcards": [
     {
       "front": "Bixolon's strategic role for IOR",
-      "back": "Co-equal Zebra label-printer replacement (with Toshiba); the aggressive price-led primary for the ZD421 installed base. An existing live brand, not a cold start."
+      "back": "THE primary Zebra label-printer replacement — the default on all displacement and new business for the ZD421 installed base. An existing live brand, not a cold start. Toshiba is the on-request secondary."
     },
     {
       "front": "XD5-40 headline speed vs ZD421",
@@ -179,7 +179,7 @@ Read: the installed Bixolon baseline today is a **receipt/linerless business**; 
     },
     {
       "front": "Bixolon vs Toshiba — when to lead with each",
-      "back": "Bixolon: aggressive price + direct-to-port ZPL estates (true drop-in). Toshiba: enterprise/retail majors, brand recognition, or Windows-driver environments. Both valid — customer fit."
+      "back": "Bixolon: always — the default on every label-printer deal. Toshiba: only when the customer specifically requests it, or an existing Toshiba estate / service-network requirement makes it the better fit."
     }
   ],
   "scenarios": [
@@ -193,7 +193,7 @@ Read: the installed Bixolon baseline today is a **receipt/linerless business**; 
         "Bixolon XD3-40 as the displacement unit"
       ],
       "correctIndex": 0,
-      "explanation": "This is the exact scenario the XD5-40 was proven in at Intact — a true drop-in for direct-to-port ZPL, faster, and the price-led choice. Toshiba is not a clean drop-in for direct-to-port ZPL; the XD3-40 is a value option, not the displacement product."
+      "explanation": "This is the exact scenario the XD5-40 was proven in at Intact — a true drop-in for direct-to-port ZPL, faster, the default IOR label replacement, and aggressively priced for a price-led deal. Toshiba is not a clean drop-in for direct-to-port ZPL; the XD3-40 is a value option, not the displacement product."
     },
     {
       "scenario": "A hospitality customer wants kitchen ticket printing in a hot, steamy, splashy environment and dislikes wasting backing paper.",
