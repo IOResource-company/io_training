@@ -1,116 +1,44 @@
 {
- "d": 20658,
- "mode": "exam",
- "date": "Friday 24 July 2026",
+ "d": 20659,
+ "mode": "study",
+ "brand": "Bixolon",
+ "date": "Saturday 25 July 2026",
  "questions": [
   {
-   "q": "A customer has an ageing TRX-3000 estate. What is IOR's recommended path?",
+   "q": "How does the XD5-40d's direct-thermal speed at 203 dpi compare to the Zebra ZD421?",
    "o": [
-    "Keep buying TRX-3000 indefinitely",
-    "Switch to NCR enterprise",
-    "Migrate to Yuno II as the direct successor",
-    "Move everything to Android tablets"
-   ],
-   "c": 2,
-   "e": "TRX-3000 is legacy with thinning parts availability. Yuno II is the same family with current CPUs, NVMe and Windows 11 IoT — the easy upgrade.",
-   "brand": "Aures"
-  },
-  {
-   "q": "What Android version and upgrade path do the lead Urovo models (e.g. RT40S) ship with?",
-   "o": [
-    "Android 10, no upgrade",
-    "Android 11, path to 13",
-    "Android 13 (GMS/AER), path to Android 17",
-    "Android 14, locked"
-   ],
-   "c": 2,
-   "e": "RT40S ships on Android 13 with GMS/AER and a stated path to Android 17 — important for 4–5 year deployments.",
-   "brand": "Urovo"
-  },
-  {
-   "q": "Before pitching Urovo to an enterprise Zebra account, what must the team validate per model?",
-   "o": [
-    "Only the colour options",
-    "Android LTS/patch cadence and accessory parity (cradles, gun grip, vehicle mount)",
-    "The shipping carrier",
-    "Nothing — all models are identical"
-   ],
-   "c": 1,
-   "e": "Enterprise buyers challenge Android version, patch cadence and accessory ecosystem. Validate LTS and accessory parity per model first.",
-   "brand": "Urovo"
-  },
-  {
-   "q": "What is Datalogic's product focus and IOR's partner status?",
-   "o": [
-    "Printers; IOR is a reseller",
-    "Data capture — scanners, mobile computers, machine vision, but no printers; IOR is a Datalogic Platinum Partner for UK & Ireland",
-    "Networking; IOR is a distributor",
-    "POS terminals; IOR has no agreement"
-   ],
-   "c": 1,
-   "e": "Everything Datalogic makes captures data — fixed retail scanners (#1 globally in bioptic and single-plane), handhelds, mobile computers, industrial scanning and machine vision — and they make no printers. IOR is a Datalogic Platinum Partner for UK & Ireland (signed 2026).",
-   "brand": "Datalogic"
-  },
-  {
-   "q": "Which Epson printer is purpose-built for tablet/cloud POS, with USB-C power delivery and integrated Bluetooth and Wi-Fi in a compact cube?",
-   "o": [
-    "TM-T20IV",
-    "TM-T88VII",
-    "TM-m30III",
-    "TM-U220"
-   ],
-   "c": 2,
-   "e": "The TM-m30III is the mPOS unit: USB-C PD to power a tablet, integrated Bluetooth/Wi-Fi, tiny footprint, ePOS-Print for cloud apps.",
-   "brand": "Epson"
-  },
-  {
-   "q": "Which Aures kiosk lines are built on the same Yuno 27\" engine?",
-   "o": [
-    "ODP 333 and ODP 444",
-    "Komet, Kwartz and Krystal",
-    "Sango and Nino",
-    "TRX-3000 and Yuno II"
-   ],
-   "c": 1,
-   "e": "Komet, Kwartz and Krystal all use the Yuno 27\" portrait system, so a customer can standardise terminals and kiosks on one family.",
-   "brand": "Aures"
-  },
-  {
-   "q": "Where does Posbank sit in IO Resource's brand mix?",
-   "o": [
-    "A minor accessory brand",
-    "IOR's #2 brand overall at ~20% of revenue",
-    "Discontinued",
-    "A scanner-only brand"
-   ],
-   "c": 1,
-   "e": "Posbank is IOR's #2 brand overall at roughly 20% of revenue, and ~35% of the departing rep's book.",
-   "brand": "Posbank"
-  },
-  {
-   "q": "Across the Apexa range, which best describes the CPU options?",
-   "o": [
-    "Only Intel Celeron",
-    "ARM only",
-    "From Intel N97/Celeron J6412 up to Core i3 and i5",
-    "AMD Ryzen only"
-   ],
-   "c": 2,
-   "e": "The same Apexa chassis scales from N97/J6412 for light retail up to Core i3/i5 for software-heavy sites.",
-   "brand": "Posbank"
-  },
-  {
-   "scenario": "A new prospect with no existing scanner fleet asks IOR to recommend a brand for a fresh deployment across their stores.",
-   "q": "How should the rep position it?",
-   "o": [
-    "Lead with Datalogic as IOR's strategic scanner push, while keeping Honeywell available if the customer specifically wants it",
-    "Insist on Honeywell because it's the only good brand",
-    "Quote Zebra by default",
-    "Let the customer pick blind with no recommendation"
+    "About 17% faster (~7 ips vs ~6 ips)",
+    "Identical at 6 ips",
+    "Slower at 4 ips",
+    "Twice as fast at 12 ips"
    ],
    "c": 0,
-   "e": "On greenfield deals with no brand preference, Datalogic is IOR's strategic lead. Honeywell remains a fully-supported alternative if requested.",
-   "brand": "Honeywell"
+   "e": "The XD5-40d tops out at ~7 ips (178 mm/s) DT vs the ZD421's ~6 ips (152 mm/s) — roughly 17% more throughput per shift.",
+   "brand": "Bixolon"
+  },
+  {
+   "q": "Which emulations let the XD5-40 drop into existing label workflows?",
+   "o": [
+    "ZPL II, EPL and DPL (DPL optional)",
+    "PostScript and PCL only",
+    "PDF Direct only",
+    "None — it uses a proprietary language with no emulation"
+   ],
+   "c": 0,
+   "e": "Native SLCS plus ZPL II, EPL and DPL emulation means existing Zebra/Eltron/Datamax/Honeywell label formats carry over without a rewrite.",
+   "brand": "Bixolon"
+  },
+  {
+   "q": "At which IOR customer was the XD5-40 proven as a live Zebra drop-in?",
+   "o": [
+    "Intact (driven from Intact Xline, direct-to-port ZPL)",
+    "Absolute Retail",
+    "It has never been tested at a customer",
+    "Only in a Zebra lab"
+   ],
+   "c": 0,
+   "e": "On IOR's Rathnew bench the XD5-40 was driven live from Intact Xline, auto-sensed ZPL, and printed perfectly with zero configuration.",
+   "brand": "Bixolon"
   }
  ]
 }
