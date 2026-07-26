@@ -1,44 +1,44 @@
 {
- "d": 20659,
+ "d": 20660,
  "mode": "study",
- "brand": "Bixolon",
- "date": "Saturday 25 July 2026",
+ "brand": "Zebra",
+ "date": "Sunday 26 July 2026",
  "questions": [
   {
-   "q": "How does the XD5-40d's direct-thermal speed at 203 dpi compare to the Zebra ZD421?",
+   "q": "A customer has Zebra TC52 handhelds. What is the IOR replacement?",
    "o": [
-    "About 17% faster (~7 ips vs ~6 ips)",
-    "Identical at 6 ips",
-    "Slower at 4 ips",
-    "Twice as fast at 12 ips"
+    "Urovo DT50",
+    "Urovo RT40 full-rugged",
+    "Datalogic Magellan 900i",
+    "Toshiba BV420D"
    ],
    "c": 0,
-   "e": "The XD5-40d tops out at ~7 ips (178 mm/s) DT vs the ZD421's ~6 ips (152 mm/s) — roughly 17% more throughput per shift.",
-   "brand": "Bixolon"
+   "e": "The mid-tier TC52/57/58 family maps to the Urovo DT50.",
+   "brand": "Zebra"
   },
   {
-   "q": "Which emulations let the XD5-40 drop into existing label workflows?",
+   "q": "Why does the Bixolon/Toshiba printer migration carry low workflow risk for the customer?",
    "o": [
-    "ZPL II, EPL and DPL (DPL optional)",
-    "PostScript and PCL only",
-    "PDF Direct only",
-    "None — it uses a proprietary language with no emulation"
+    "They emulate ZPL II, so they drop into a Zebra estate without rewriting label formats",
+    "They use the same Zebra DNA software",
+    "They are made by Zebra under licence",
+    "They only print blank labels"
    ],
    "c": 0,
-   "e": "Native SLCS plus ZPL II, EPL and DPL emulation means existing Zebra/Eltron/Datamax/Honeywell label formats carry over without a rewrite.",
-   "brand": "Bixolon"
+   "e": "ZPL II emulation means existing label formats, BarTender templates and middleware keep working — a drop-in replacement with no format rewrites.",
+   "brand": "Zebra"
   },
   {
-   "q": "At which IOR customer was the XD5-40 proven as a live Zebra drop-in?",
+   "q": "A customer runs Zebra ZQ610 mobile printers. What is the key thing to check before quoting the Urovo replacement?",
    "o": [
-    "Intact (driven from Intact Xline, direct-to-port ZPL)",
-    "Absolute Retail",
-    "It has never been tested at a customer",
-    "Only in a Zebra lab"
+    "That ZPL support is confirmed — it needs SDK work, so pre-qualify",
+    "That the customer has Wi-Fi 6",
+    "That the printer prints in colour",
+    "Nothing — it is a straight drop-in"
    ],
    "c": 0,
-   "e": "On IOR's Rathnew bench the XD5-40 was driven live from Intact Xline, auto-sensed ZPL, and printed perfectly with zero configuration.",
-   "brand": "Bixolon"
+   "e": "The ZQ610 maps to the Urovo SP319/SP409, but ZPL needs SDK work. Always pre-qualify the ZPL requirement before committing to a quote.",
+   "brand": "Zebra"
   }
  ]
 }
