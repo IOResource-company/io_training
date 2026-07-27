@@ -1,44 +1,44 @@
 {
- "d": 20660,
+ "d": 20661,
  "mode": "study",
- "brand": "Zebra",
- "date": "Sunday 26 July 2026",
+ "brand": "NCR Voyix",
+ "date": "Monday 27 July 2026",
  "questions": [
   {
-   "q": "A customer has Zebra TC52 handhelds. What is the IOR replacement?",
+   "q": "Where does NCR Voyix sit in IO Resource's brand mix?",
    "o": [
-    "Urovo DT50",
-    "Urovo RT40 full-rugged",
-    "Datalogic Magellan 900i",
-    "Toshiba BV420D"
+    "IOR's #1 brand by revenue (~24%)",
+    "A minor accessory brand",
+    "Discontinued",
+    "A scanner-only brand"
    ],
    "c": 0,
-   "e": "The mid-tier TC52/57/58 family maps to the Urovo DT50.",
-   "brand": "Zebra"
+   "e": "NCR Voyix is IOR's #1 brand by revenue at roughly 24%.",
+   "brand": "NCR Voyix"
   },
   {
-   "q": "Why does the Bixolon/Toshiba printer migration carry low workflow risk for the customer?",
+   "q": "What should a rep do before quoting NCR?",
    "o": [
-    "They emulate ZPL II, so they drop into a Zebra estate without rewriting label formats",
-    "They use the same Zebra DNA software",
-    "They are made by Zebra under licence",
-    "They only print blank labels"
+    "Coordinate with Conn — the NCR module is parked and Conn-owned",
+    "Quote immediately at list price",
+    "Substitute Zebra",
+    "Nothing — it is fully self-serve"
    ],
    "c": 0,
-   "e": "ZPL II emulation means existing label formats, BarTender templates and middleware keep working — a drop-in replacement with no format rewrites.",
-   "brand": "Zebra"
+   "e": "NCR is parked and maintained by Conn; coordinate with him before quoting.",
+   "brand": "NCR Voyix"
   },
   {
-   "q": "A customer runs Zebra ZQ610 mobile printers. What is the key thing to check before quoting the Urovo replacement?",
+   "q": "What does NCR Voyix primarily supply?",
    "o": [
-    "That ZPL support is confirmed — it needs SDK work, so pre-qualify",
-    "That the customer has Wi-Fi 6",
-    "That the printer prints in colour",
-    "Nothing — it is a straight drop-in"
+    "POS terminals and self-checkout hardware for retail, hospitality and grocery",
+    "Barcode label printers only",
+    "Android handhelds only",
+    "Network switches"
    ],
    "c": 0,
-   "e": "The ZQ610 maps to the Urovo SP319/SP409, but ZPL needs SDK work. Always pre-qualify the ZPL requirement before committing to a quote.",
-   "brand": "Zebra"
+   "e": "NCR Voyix supplies POS terminals and self-checkout (SCO) hardware for retail, hospitality and grocery.",
+   "brand": "NCR Voyix"
   }
  ]
 }
