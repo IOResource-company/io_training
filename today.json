@@ -1,44 +1,44 @@
 {
- "d": 20661,
+ "d": 20662,
  "mode": "study",
- "brand": "NCR Voyix",
- "date": "Monday 27 July 2026",
+ "brand": "Posbank",
+ "date": "Tuesday 28 July 2026",
  "questions": [
   {
-   "q": "Where does NCR Voyix sit in IO Resource's brand mix?",
+   "q": "Across the Apexa range, which best describes the CPU options?",
    "o": [
-    "IOR's #1 brand by revenue (~24%)",
-    "A minor accessory brand",
-    "Discontinued",
-    "A scanner-only brand"
+    "Only Intel Celeron",
+    "ARM only",
+    "From Intel N97/Celeron J6412 up to Core i3 and i5",
+    "AMD Ryzen only"
    ],
-   "c": 0,
-   "e": "NCR Voyix is IOR's #1 brand by revenue at roughly 24%.",
-   "brand": "NCR Voyix"
+   "c": 2,
+   "e": "The same Apexa chassis scales from N97/J6412 for light retail up to Core i3/i5 for software-heavy sites.",
+   "brand": "Posbank"
   },
   {
-   "q": "What should a rep do before quoting NCR?",
+   "q": "What screen sizes does the Posbank BigPos kiosk come in?",
    "o": [
-    "Coordinate with Conn — the NCR module is parked and Conn-owned",
-    "Quote immediately at list price",
-    "Substitute Zebra",
-    "Nothing — it is fully self-serve"
+    "10.1\" and 15\"",
+    "15.6\" and 21.5\"",
+    "21.5\" and 27\"",
+    "27\" and 32\""
    ],
-   "c": 0,
-   "e": "NCR is parked and maintained by Conn; coordinate with him before quoting.",
-   "brand": "NCR Voyix"
+   "c": 2,
+   "e": "BigPos is offered in 21.5\" and 27\". (The Mazic K kiosk is the 15.6\"/21.5\" line.)",
+   "brand": "Posbank"
   },
   {
-   "q": "What does NCR Voyix primarily supply?",
+   "q": "Why is 'fanless' a key selling point for Posbank POS terminals?",
    "o": [
-    "POS terminals and self-checkout hardware for retail, hospitality and grocery",
-    "Barcode label printers only",
-    "Android handhelds only",
-    "Network switches"
+    "It makes them cheaper to ship",
+    "No moving parts means higher reliability, silent running and no dust/grease ingress",
+    "It allows a bigger screen",
+    "It removes the need for an SSD"
    ],
-   "c": 0,
-   "e": "NCR Voyix supplies POS terminals and self-checkout (SCO) hardware for retail, hospitality and grocery.",
-   "brand": "NCR Voyix"
+   "c": 1,
+   "e": "Fanless design eliminates the fan as a failure point and a dust/grease trap, giving longer life and silent operation.",
+   "brand": "Posbank"
   }
  ]
 }
