@@ -4,7 +4,7 @@
 
 Epson (Seiko Epson Corporation, Japan) is the global market leader in point-of-sale receipt printing. Its TM-series ("TM" = Thermal Matrix/Tally Machine heritage) thermal and impact printers are the de-facto industry standard — IDC ranks Epson No.1 for POS receipt printers in Western Europe, and millions of units are deployed worldwide. The ESC/POS command language Epson created is itself the universal POS print standard that virtually every till, EPOS package and payment platform supports out of the box.
 
-For IO Resource, Epson is a strategic, high-priority brand: roughly 5.6% of total IOR revenue and the No.2 line in the departing rep's book (~20% of that book). IOR carries Epson because it is the safe, ubiquitous default for any retail or hospitality POS deal — a brand customers ask for by name, that "just works" with their POS software, and that carries the lowest support and integration risk. IOR also offers spares and a repair-centre service for the range, which deepens the after-sales relationship.
+For IO Resource, Epson is a strategic, high-priority brand at roughly 5.6% of total IOR revenue. IOR carries Epson because it is the safe, ubiquitous default for any retail or hospitality POS deal — a brand customers ask for by name, that "just works" with their POS software, and that carries the lowest support and integration risk. IOR also offers spares and a repair-centre service for the range, which deepens the after-sales relationship.
 
 Key ecosystem points a rep should know:
 - **ESC/POS** — Epson's command set, the universal POS print language. Compatibility is rarely a question with Epson.

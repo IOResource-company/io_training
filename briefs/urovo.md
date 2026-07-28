@@ -6,7 +6,7 @@ Urovo is a Chinese AIDC (automatic identification and data capture) manufacturer
 
 The range is built on current Qualcomm silicon, ships with **Google Mobile Services (GMS) certification** and **Android Enterprise Recommended (AER)** status on the lead models, and supports OTA management through standard MDM platforms (SOTI MobiControl, SOTI XSight, etc.). Build quality, battery life, and competitive pricing are the consistent themes across the line.
 
-IOR carries Urovo because it is a credible, well-priced enterprise-mobility brand that we hold in **local Irish/UK stock** with a clean **warranty/RMA path** — and, strategically, because Urovo is **IOR's primary replacement for Zebra handheld computers**. Within the "Kill the Zebra" displacement plan, the three pillars are scanners (Datalogic), label printers (Bixolon/Toshiba), and **handhelds (Urovo, lead brand)**. Urovo is the first-priority answer for displacing the Zebra TC and MC mobile-computer ranges. Urovo is ~8.5% of IOR revenue and was the #3 line (≈13%) in the departing rep's book.
+IOR carries Urovo because it is a credible, well-priced enterprise-mobility brand that we hold in **local Irish/UK stock** with a clean **warranty/RMA path** — and, strategically, because Urovo is **IOR's primary replacement for Zebra handheld computers**. Within the "Kill the Zebra" displacement plan, the three pillars are scanners (Datalogic), label printers (Bixolon/Toshiba), and **handhelds (Urovo, lead brand)**. Urovo is the first-priority answer for displacing the Zebra TC and MC mobile-computer ranges. Urovo is ~8.5% of IOR revenue.
 
 ## Product line (key SKUs)
 

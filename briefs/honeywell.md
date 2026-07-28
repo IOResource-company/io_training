@@ -6,7 +6,7 @@ Honeywell is one of the longest-established names in barcode scanning. The Honey
 
 For IO Resource, Honeywell is effectively a **barcode scanner brand** — close to 100% of what IOR sells under Honeywell is handheld and presentation scanners, with a small amount of mobile-computer and accessory volume. It is a current **preferred line**: when a customer asks for Honeywell by name, or already runs a Honeywell fleet they want to extend, IOR quotes and supplies it as a first-class product.
 
-Market position: Honeywell sits alongside Zebra at the premium / enterprise end of the scanner market, with a deep range that spans entry-level retail POS up to ultra-rugged industrial. IOR carries them because they are a trusted, broadly-compatible brand with proven scan-engine performance, a wide form-factor range, and an installed base across the reseller's customers — particularly the customers being inherited from the departing rep (~7.5% of that book), where continuity matters.
+Market position: Honeywell sits alongside Zebra at the premium / enterprise end of the scanner market, with a deep range that spans entry-level retail POS up to ultra-rugged industrial. IOR carries them because they are a trusted, broadly-compatible brand with proven scan-engine performance, a wide form-factor range, and an installed base across our existing customers, where continuity matters.
 
 ## Product line (key SKUs)
 

@@ -1,7 +1,7 @@
 # Posbank — Training Brief
 
 ## Positioning (who they are)
-Posbank is a South Korean POS hardware manufacturer (the brand of Posbank Co., Ltd.) specialising in fanless all-in-one POS terminals, self-service kiosks, self-checkout (SCO) systems, and kitchen display systems for retail and hospitality. Their flagship APEXA platform is an established industry best-seller, and the line is positioned as value-to-mid-tier: well-built, flexible hardware at strong channel pricing rather than a premium badge. Notably, Posbank is also an ODM that manufactures hardware for other POS brands (including Aures), which is why their build quality and reliability stand up against names that cost more. IO Resource carries the full Posbank range because it combines fanless reliability, a broad peripheral ecosystem (2nd displays, MSR, VFD, cash-drawer, fingerprint), consistent ex-stock availability through our warehouse, and channel pricing that lets us win mid-tier retail and hospitality deals on value. It is IOR's #2 brand overall (~20% of revenue) and the single largest brand in the departing rep's book (~35%) — a top priority to protect.
+Posbank is a South Korean POS hardware manufacturer (the brand of Posbank Co., Ltd.) specialising in fanless all-in-one POS terminals, self-service kiosks, self-checkout (SCO) systems, and kitchen display systems for retail and hospitality. Their flagship APEXA platform is an established industry best-seller, and the line is positioned as value-to-mid-tier: well-built, flexible hardware at strong channel pricing rather than a premium badge. Notably, Posbank is also an ODM that manufactures hardware for other POS brands (including Aures), which is why their build quality and reliability stand up against names that cost more. IO Resource carries the full Posbank range because it combines fanless reliability, a broad peripheral ecosystem (2nd displays, MSR, VFD, cash-drawer, fingerprint), consistent ex-stock availability through our warehouse, and channel pricing that lets us win mid-tier retail and hospitality deals on value. It is IOR's #2 brand overall (~20% of revenue) — a top priority to protect.
 
 ## Product line (key SKUs)
 The Apexa family is the heart of the line; kiosks and the Android terminal round it out.
@@ -110,7 +110,7 @@ Also recurring at volume: `PB-APG-MSR-DG` (MSR add-on, 456 units), `PB-APG-CDP-D
     "q": "Where does Posbank sit in IO Resource's brand mix?",
     "options": ["A minor accessory brand", "IOR's #2 brand overall at ~20% of revenue", "Discontinued", "A scanner-only brand"],
     "correctIndex": 1,
-    "explanation": "Posbank is IOR's #2 brand overall at roughly 20% of revenue, and the single largest brand in the departing rep's book (~35%) — a high priority to protect."
+    "explanation": "Posbank is IOR's #2 brand overall at roughly 20% of revenue — a high priority to protect."
   }
 ]
 ```
@@ -123,7 +123,7 @@ Also recurring at volume: `PB-APG-MSR-DG` (MSR add-on, 456 units), `PB-APG-CDP-D
   {"front": "Mint in one line?", "back": "Compact 10.1\" all-in-one POS with built-in 3\" auto-cutter printer; tilting screen = signature pad; Android or Windows."},
   {"front": "BigPos vs Mazic K — what's the difference?", "back": "BigPos = larger self-checkout kiosk (21.5\"/27\"); Mazic K = compact self-service kiosk (15.6\"/21.5\")."},
   {"front": "Apexa OS support?", "back": "Windows 10 IoT and Windows 11 (Mint also offers Android)."},
-  {"front": "Posbank share of IOR revenue?", "back": "~20% overall (#2 brand); ~35% of the departing rep's book."}
+  {"front": "Posbank share of IOR revenue?", "back": "~20% overall — IOR's #2 brand."}
 ]
 ```
 
