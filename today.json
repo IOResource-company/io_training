@@ -1,44 +1,44 @@
 {
- "d": 20662,
+ "d": 20663,
  "mode": "study",
- "brand": "Posbank",
- "date": "Tuesday 28 July 2026",
+ "brand": "Epson",
+ "date": "Wednesday 29 July 2026",
  "questions": [
   {
-   "q": "Across the Apexa range, which best describes the CPU options?",
+   "q": "A restaurant kitchen needs a printer that survives heat and steam and can highlight priority orders in red. Which Epson model fits?",
    "o": [
-    "Only Intel Celeron",
-    "ARM only",
-    "From Intel N97/Celeron J6412 up to Core i3 and i5",
-    "AMD Ryzen only"
+    "TM-m30III",
+    "TM-L90II",
+    "TM-U220 (impact)",
+    "TM-T88VII"
    ],
    "c": 2,
-   "e": "The same Apexa chassis scales from N97/J6412 for light retail up to Core i3/i5 for software-heavy sites.",
-   "brand": "Posbank"
+   "e": "The TM-U220 is a 9-pin impact printer; impact survives kitchen heat where thermal fades, and the two-colour ribbon highlights priority items.",
+   "brand": "Epson"
   },
   {
-   "q": "What screen sizes does the Posbank BigPos kiosk come in?",
+   "q": "On receipt printers, what is IOR's recommended competitive posture?",
    "o": [
-    "10.1\" and 15\"",
-    "15.6\" and 21.5\"",
-    "21.5\" and 27\"",
-    "27\" and 32\""
-   ],
-   "c": 2,
-   "e": "BigPos is offered in 21.5\" and 27\". (The Mazic K kiosk is the 15.6\"/21.5\" line.)",
-   "brand": "Posbank"
-  },
-  {
-   "q": "Why is 'fanless' a key selling point for Posbank POS terminals?",
-   "o": [
-    "It makes them cheaper to ship",
-    "No moving parts means higher reliability, silent running and no dust/grease ingress",
-    "It allows a bigger screen",
-    "It removes the need for an SSD"
+    "Displace Epson with Bixolon wherever possible",
+    "Lead with Epson; use the TM-T20IV as the value answer to price-led challengers",
+    "Only quote Star Micronics",
+    "Avoid Epson on hospitality deals"
    ],
    "c": 1,
-   "e": "Fanless design eliminates the fan as a failure point and a dust/grease trap, giving longer life and silent operation.",
-   "brand": "Posbank"
+   "e": "Epson is the leader and IOR's lead receipt-printer brand; sell reliability and compatibility, and use the TM-T20IV to defend against price-led competition.",
+   "brand": "Epson"
+  },
+  {
+   "q": "Which Epson printer is purpose-built for tablet/cloud POS, with USB-C power delivery and integrated Bluetooth and Wi-Fi in a compact cube?",
+   "o": [
+    "TM-T20IV",
+    "TM-T88VII",
+    "TM-m30III",
+    "TM-U220"
+   ],
+   "c": 2,
+   "e": "The TM-m30III is the mPOS unit: USB-C PD to power a tablet, integrated Bluetooth/Wi-Fi, tiny footprint, ePOS-Print for cloud apps.",
+   "brand": "Epson"
   }
  ]
 }
