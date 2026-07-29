@@ -4,8 +4,15 @@
 // Curriculum:
 //   - Most days: ONE brand in focus (rotating through DATA.brands in order) —
 //     positioning, a slice of products/specs, verticals, talking points,
-//     objections and a 3-question quiz on that brand only.
-//   - Fridays: "general exam" — 8 questions across all brands + a scenario.
+//     objections, one technical mechanism, one symptom, and a 4-question quiz
+//     (3 product + 1 technical) on that brand only.
+//   - Fridays: "general exam" — 8 product questions + 2 technical across all
+//     brands, a scenario, and a symptom of the week.
+//
+// The technical layer comes from the Field Technical Guide for Sales
+// (docs/IOR-Field-Technical-Guide-Vol1.docx and Vol2.docx) and lives in DATA as
+// brand.tech (mechanisms), brand.symptoms (customer says / means / do) and
+// brand.techQuiz (questions). Brands without those fields degrade gracefully.
 //
 // Reads DATA straight out of IOR-Product-Training.html (single source of truth),
 // renders a branded, dark-mode-resistant HTML email and sends it via Resend.
@@ -155,6 +162,26 @@ const objectionBox = (ob) =>
     <div class="navy" style="font-size:12px;font-weight:700;color:${NAVY};margin-bottom:4px;">&ldquo;${esc(ob.q)}&rdquo;</div>
     <div class="txt" style="font-size:13px;color:${TEXT};line-height:1.55;">${esc(ob.a)}</div></div>`;
 
+// ---------- technical layer (Field Technical Guide, Vols 1 & 2) ----------
+// brand.tech      — how it actually works, one nugget at a time
+// brand.symptoms  — {s: customer says, c: what it means, a: what to do}
+// brand.techQuiz  — technical questions, mixed into the day's quiz and the Friday exam
+
+const techBox = (t) =>
+  `<div class="navy" style="font-size:14px;font-weight:600;color:${NAVY};margin-bottom:6px;">${esc(t.t)}</div>
+   <div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;">${esc(t.d)}</div>`;
+
+// Three labelled rows — reads on a phone, and mirrors the guide's symptom tables.
+const symptomBox = (sy, showBrand) => {
+  const row = (label, value, colour) =>
+    `<div style="margin:0 0 6px;">
+      <span class="muted" style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:${colour};">${label}</span>
+      <div class="txt" style="font-size:13px;color:${TEXT};line-height:1.55;">${esc(value)}</div></div>`;
+  const brandTag = showBrand ? `<div class="muted" style="font-size:11px;color:${STEEL};margin-bottom:8px;">${esc(sy.brand)}</div>` : '';
+  return `<div class="tint" style="margin:0 0 10px;padding:12px 14px;${bg(TINT)}border-radius:6px;">
+    ${brandTag}${row('Customer says', sy.s, NAVY)}${row('What it usually means', sy.c, STEEL)}${row('What to do', sy.a, '#2E8B57')}</div>`;
+};
+
 const answerLine = (label, q) =>
   `<p class="txt" style="margin:0 0 8px;font-size:13px;color:${TEXT};"><strong class="navy" style="color:${NAVY};">${label}: ${letters[q.c]}</strong> — ${esc(q.e || q.o[q.c])}</p>`;
 
@@ -183,17 +210,27 @@ if (isExamDay) {
   // ----- Friday: general exam across every brand -----
   const allQuiz = brands.flatMap(b => (b.quiz || []).map(q => ({ ...q, brand: b.name })));
   const allScenarios = brands.flatMap(b => (b.scenarios || []).map(s => ({ ...s, brand: b.name })));
-  const exam = pickN(allQuiz, 8);
+  const allTech = brands.flatMap(b => (b.techQuiz || []).map(q => ({ ...q, brand: b.name })));
+  const allSymptoms = brands.flatMap(b => (b.symptoms || []).map(s => ({ ...s, brand: b.name })));
+  // 8 product questions + 2 from the technical guide, so the technical layer is examined too
+  const exam = [...pickN(allQuiz, 8), ...pickN(allTech, 2)];
   const scenario = pick(allScenarios);
+  const symptom = allSymptoms.length ? pick(allSymptoms) : null;
 
   subject = `IOR Weekly Exam — all brands (${shortDate})`;
   headline = 'Weekly General Exam';
 
   sections.push(card('This week’s exam',
-    `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;margin-bottom:10px;">Eight questions across the whole range, plus one scenario. Take it interactively — answers turn green or red as you tap, score at the top. Or read on and check yourself against the answers at the bottom.</div>
+    `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;margin-bottom:10px;">Ten questions across the whole range &mdash; eight on product, two from the Field Technical Guide &mdash; plus one scenario. Take it interactively: answers turn green or red as you tap, score at the top. Or read on and check yourself against the answers at the bottom.</div>
      ${quizButton}`, NAVY));
 
   sections.push(card('Questions', exam.map((q, i) => quizBlock(q, i, true)).join('')));
+
+  if (symptom) {
+    sections.push(card('Symptom of the week',
+      `<div class="txt" style="font-size:13px;color:${TEXT};line-height:1.6;margin-bottom:10px;">One from the Field Technical Guide. If a customer opened with this on the phone, could you place it?</div>
+       ${symptomBox(symptom, true)}`, '#D4A017'));
+  }
 
   sections.push(card(`Scenario — ${esc(scenario.brand)}`,
     `<div class="txt" style="font-size:14px;color:${TEXT};line-height:1.6;margin-bottom:8px;">${esc(scenario.scenario)}</div>
@@ -213,8 +250,9 @@ if (isExamDay) {
 
   // plain-text version
   T(`IOResource — Weekly General Exam`); T(dateStr); T();
-  T(`Eight questions across the whole range, plus one scenario.`);
-  T(`Answers at the bottom. Score yourself out of 9.`);
+  T(`Ten questions across the whole range — eight on product, two from the`);
+  T(`Field Technical Guide — plus one scenario.`);
+  T(`Answers at the bottom. Score yourself out of ${exam.length + 1}.`);
   T(`Full training app: ${SITE_URL}`); T(); T(RULE); T();
   exam.forEach((q, i) => {
     T(`Q${i + 1} (${q.brand}) — ${plain(q.q)}`);
@@ -222,7 +260,14 @@ if (isExamDay) {
     T();
   });
   T(`SCENARIO (${scenario.brand})`); T(plain(scenario.scenario)); T(plain(scenario.q));
-  scenario.o.forEach((o, j) => T(`  ${letters[j]}. ${plain(o)}`)); T(); T(RULE); T();
+  scenario.o.forEach((o, j) => T(`  ${letters[j]}. ${plain(o)}`)); T();
+  if (symptom) {
+    T(`SYMPTOM OF THE WEEK (${symptom.brand})`);
+    T(`  Customer says: ${plain(symptom.s)}`);
+    T(`  Usually means: ${plain(symptom.c)}`);
+    T(`  What to do:    ${plain(symptom.a)}`); T();
+  }
+  T(RULE); T();
   T('ANSWERS');
   exam.forEach((q, i) => T(`Q${i + 1}: ${letters[q.c]} — ${plain(q.e || q.o[q.c])}`));
   T(`Scenario: ${letters[scenario.c]} — ${plain(scenario.e || scenario.o[scenario.c])}`);
@@ -232,8 +277,15 @@ if (isExamDay) {
   const products = pickN(focus.products || [], Math.min(2, (focus.products || []).length));
   const talkingPoints = pickN(focus.talkingPoints || [], 2);
   const objections = pickN(focus.objections || [], 2);
-  const quiz = pickN((focus.quiz || []).map(q => ({ ...q, brand: focus.name })), 3);
   const flashcard = pick(focus.flashcards || []);
+  // Technical layer: one mechanism, one symptom, and one technical question
+  // appended to the day's quiz so it is actually tested, not just read.
+  const techNote = (focus.tech || []).length ? pick(focus.tech) : null;
+  const symptom = (focus.symptoms || []).length ? pick(focus.symptoms) : null;
+  const quiz = [
+    ...pickN((focus.quiz || []).map(q => ({ ...q, brand: focus.name })), 3),
+    ...pickN((focus.techQuiz || []).map(q => ({ ...q, brand: focus.name })), 1),
+  ];
 
   subject = `IOR Daily Training — Focus: ${focus.name} (${shortDate})`;
   headline = `Brand Focus — ${focus.name}`;
@@ -267,7 +319,17 @@ if (isExamDay) {
     sections.push(card('Objection handling', objections.map(objectionBox).join('')));
   }
 
-  sections.push(card(`Quick quiz — ${esc(focus.name)} only`,
+  if (techNote) {
+    sections.push(card('How it actually works', techBox(techNote), '#D4A017'));
+  }
+
+  if (symptom) {
+    sections.push(card('When it goes wrong',
+      `<div class="txt" style="font-size:13px;color:${TEXT};line-height:1.6;margin-bottom:10px;">From the Field Technical Guide — the shape every support call takes.</div>
+       ${symptomBox(symptom, false)}`, '#D4A017'));
+  }
+
+  sections.push(card(`Quick quiz — ${esc(focus.name)}${(focus.techQuiz || []).length ? ', including one technical question' : ' only'}`,
     quiz.map((q, i) => quizBlock(q, i, false)).join('') + quizButton));
 
   quizData = {
@@ -309,7 +371,17 @@ if (isExamDay) {
     T('OBJECTION HANDLING');
     objections.forEach(ob => { T(`  “${plain(ob.q)}”`); T(`  ${plain(ob.a)}`); T(); });
   }
-  T(`QUICK QUIZ — ${focus.name} only (answers below)`); T();
+  if (techNote) {
+    T('HOW IT ACTUALLY WORKS');
+    T(`  ${plain(techNote.t)}`); T(`  ${plain(techNote.d)}`); T();
+  }
+  if (symptom) {
+    T('WHEN IT GOES WRONG');
+    T(`  Customer says: ${plain(symptom.s)}`);
+    T(`  Usually means: ${plain(symptom.c)}`);
+    T(`  What to do:    ${plain(symptom.a)}`); T();
+  }
+  T(`QUICK QUIZ — ${focus.name}, including one technical question (answers below)`); T();
   quiz.forEach((q, i) => {
     T(`Q${i + 1} — ${plain(q.q)}`);
     q.o.forEach((o, j) => T(`  ${letters[j]}. ${plain(o)}`));

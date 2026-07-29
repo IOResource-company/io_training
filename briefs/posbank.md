@@ -19,6 +19,17 @@ The Apexa family is the heart of the line; kiosks and the Android terminal round
 
 Kitchen Display Systems (KDS) are also part of the Posbank catalogue for hospitality kitchens.
 
+## Mounting options (kiosks)
+Mazic K and BigPos can be floor-stood, counter-mounted or wall-mounted. The **standard wall-mount kit** is worth understanding before you quote it, because it changes what the site needs:
+
+- It is a **fixed L-shaped steel shelf bracket, not an adjustable arm** — no tilt, swivel or height adjustment once it's fitted. Agree the mounting height with the customer up front.
+- The **vertical back plate** has 6 fixing holes (two teardrop/keyhole slots at the top so the bracket can be hung and levelled before final tightening); **4 of the 6 are used**. Red masonry plugs + pan-head screws are supplied, i.e. sized for solid wall or block — stud or plasterboard walls need suitable anchors or noggins.
+- The **horizontal shelf** carries the kiosk's weight in shear (braced by folded side gussets) and has a **central rectangular cut-out for power and network cabling**. The kiosk sits down onto the shelf and is secured with **4 screws up from underneath**.
+- Fitting is two steps: fix the bracket to the wall, then drop the kiosk on and screw it up from below.
+- **Posbank's stated limits:** install on a flat surface, away from direct sunlight (it degrades LCD performance and lifespan); faults caused by an unsuitable installation location are **not covered by after-sales service**; outdoor installation is not recommended and is not supported unless verified by Posbank HQ or a service centre.
+
+Practical check before quoting a wall install: wall construction, mounting height, and a power socket plus network drop behind or below the cut-out.
+
 ## Top sellers (what actually sells)
 Posbank total net revenue in the sales data (Aug-24 → present, IRL+UK, ex IO UK intercompany): **~€1.63m across 86 distinct SKUs.** The Apexa terminal range is overwhelmingly dominant — the top four SKUs are all 15" Apexa terminals and account for the great majority of revenue.
 
