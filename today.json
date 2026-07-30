@@ -1,44 +1,44 @@
 {
- "d": 20663,
+ "d": 20664,
  "mode": "study",
- "brand": "Epson",
- "date": "Wednesday 29 July 2026",
+ "brand": "Urovo",
+ "date": "Thursday 30 July 2026",
  "questions": [
   {
-   "q": "A restaurant kitchen needs a printer that survives heat and steam and can highlight priority orders in red. Which Epson model fits?",
+   "q": "What IP rating and special environmental variant does the Urovo RT40S offer for the toughest warehouse use?",
    "o": [
-    "TM-m30III",
-    "TM-L90II",
-    "TM-U220 (impact)",
-    "TM-T88VII"
+    "IP54, no cold variant",
+    "IP65, heat-resistant only",
+    "IP68, with an optional −30°C cold-chain variant",
+    "IP67, water-only"
    ],
    "c": 2,
-   "e": "The TM-U220 is a 9-pin impact printer; impact survives kitchen heat where thermal fades, and the two-colour ribbon highlights priority items.",
-   "brand": "Epson"
+   "e": "RT40S is rated IP68 with a 1.8 m drop spec and an optional −30°C cold-chain variant for freezers.",
+   "brand": "Urovo"
   },
   {
-   "q": "On receipt printers, what is IOR's recommended competitive posture?",
+   "q": "Before pitching Urovo to an enterprise Zebra account, what must the team validate per model?",
    "o": [
-    "Displace Epson with Bixolon wherever possible",
-    "Lead with Epson; use the TM-T20IV as the value answer to price-led challengers",
-    "Only quote Star Micronics",
-    "Avoid Epson on hospitality deals"
+    "Only the colour options",
+    "Android LTS/patch cadence and accessory parity (cradles, gun grip, vehicle mount)",
+    "The shipping carrier",
+    "Nothing — all models are identical"
    ],
    "c": 1,
-   "e": "Epson is the leader and IOR's lead receipt-printer brand; sell reliability and compatibility, and use the TM-T20IV to defend against price-led competition.",
-   "brand": "Epson"
+   "e": "Enterprise buyers challenge Android version, patch cadence and accessory ecosystem. Validate LTS and accessory parity per model first.",
+   "brand": "Urovo"
   },
   {
-   "q": "Which Epson printer is purpose-built for tablet/cloud POS, with USB-C power delivery and integrated Bluetooth and Wi-Fi in a compact cube?",
+   "q": "A customer running Zebra TC52 / TC57 mid-tier handhelds for retail and warehouse picking should be quoted which Urovo model?",
    "o": [
-    "TM-T20IV",
-    "TM-T88VII",
-    "TM-m30III",
-    "TM-U220"
+    "RT40 only",
+    "DT50",
+    "P8100H tablet",
+    "K329 printer"
    ],
-   "c": 2,
-   "e": "The TM-m30III is the mPOS unit: USB-C PD to power a tablet, integrated Bluetooth/Wi-Fi, tiny footprint, ePOS-Print for cloud apps.",
-   "brand": "Epson"
+   "c": 1,
+   "e": "DT50 covers the TC52/57/58 mid-tier and adds mPOS credibility (Dreamtec deployment).",
+   "brand": "Urovo"
   }
  ]
 }
