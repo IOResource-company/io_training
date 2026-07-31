@@ -1,44 +1,116 @@
 {
- "d": 20664,
- "mode": "study",
- "brand": "Urovo",
- "date": "Thursday 30 July 2026",
+ "d": 20665,
+ "mode": "exam",
+ "date": "Friday 31 July 2026",
  "questions": [
   {
-   "q": "What IP rating and special environmental variant does the Urovo RT40S offer for the toughest warehouse use?",
+   "q": "Why is migrating from a Zebra to a BV420D low-risk for the customer?",
    "o": [
-    "IP54, no cold variant",
-    "IP65, heat-resistant only",
-    "IP68, with an optional −30°C cold-chain variant",
-    "IP67, water-only"
+    "Toshiba sends a free technician",
+    "ZPL II emulation means existing label templates and BarTender workflow carry across",
+    "The BV420D auto-imports Zebra firmware",
+    "Zebra and Toshiba use identical part numbers"
+   ],
+   "c": 1,
+   "e": "ZPL II emulation plus the same BarTender design workflow makes it a driver reinstall and config step, not a workflow rebuild.",
+   "brand": "Toshiba"
+  },
+  {
+   "q": "The Zebra ZD421 has more standard memory than the BV420D. When does that actually matter?",
+   "o": [
+    "For every retail deployment",
+    "Only for very large on-device font libraries or extensive stored label formats",
+    "When printing in colour",
+    "For Ethernet connectivity"
+   ],
+   "c": 1,
+   "e": "The extra memory only matters for large Unicode font sets or many stored formats; standard retail, logistics and healthcare labelling never approaches the BV420D's limits.",
+   "brand": "Toshiba"
+  },
+  {
+   "q": "What is the Bixolon XD5-40's role in the 'Kill the Zebra' strategy?",
+   "o": [
+    "The primary label-printer replacement for the Zebra ZD421 — the default on all displacement and new business",
+    "A scanner replacement for the Zebra DS9308",
+    "A handheld computer replacing the Zebra TC52",
+    "A mobile printer with no displacement role"
+   ],
+   "c": 0,
+   "e": "Bixolon is IOR's primary Zebra label-printer replacement; the XD5-40 is the default quote for the ZD421 installed base. Toshiba is the on-request secondary.",
+   "brand": "Bixolon"
+  },
+  {
+   "q": "A customer has Zebra TC52 handhelds. What is the IOR replacement?",
+   "o": [
+    "Urovo DT50",
+    "Urovo RT40 full-rugged",
+    "Datalogic Magellan 900i",
+    "Toshiba BV420D"
+   ],
+   "c": 0,
+   "e": "The mid-tier TC52/57/58 family maps to the Urovo DT50.",
+   "brand": "Zebra"
+  },
+  {
+   "q": "What is the BV420D's max direct-thermal print speed at 203 dpi?",
+   "o": [
+    "4 ips",
+    "6 ips",
+    "7 ips",
+    "10 ips"
    ],
    "c": 2,
-   "e": "RT40S is rated IP68 with a 1.8 m drop spec and an optional −30°C cold-chain variant for freezers.",
+   "e": "The BV420D runs 7 ips at 203 dpi versus the Zebra ZD421's 6 ips — about 17% faster.",
+   "brand": "Toshiba"
+  },
+  {
+   "q": "Which Epson printer is purpose-built for tablet/cloud POS, with USB-C power delivery and integrated Bluetooth and Wi-Fi in a compact cube?",
+   "o": [
+    "TM-T20IV",
+    "TM-T88VII",
+    "TM-m30III",
+    "TM-U220"
+   ],
+   "c": 2,
+   "e": "The TM-m30III is the mPOS unit: USB-C PD to power a tablet, integrated Bluetooth/Wi-Fi, tiny footprint, ePOS-Print for cloud apps.",
+   "brand": "Epson"
+  },
+  {
+   "q": "When does Toshiba get quoted on a Zebra label-printer replacement?",
+   "o": [
+    "On every deal, alongside Bixolon",
+    "Only when the customer specifically requests Toshiba, or an existing Toshiba estate / service-network requirement makes it the better fit",
+    "Whenever the customer mentions Zebra",
+    "Whenever the deal is price-led"
+   ],
+   "c": 1,
+   "e": "Bixolon is the primary and the default quote on all displacement and new business. Toshiba is the on-request secondary — customer asks for it, or a Toshiba estate / service-network requirement is in scope.",
+   "brand": "Toshiba"
+  },
+  {
+   "q": "What Android version and upgrade path do the lead Urovo models (e.g. RT40S) ship with?",
+   "o": [
+    "Android 10, no upgrade",
+    "Android 11, path to 13",
+    "Android 13 (GMS/AER), path to Android 17",
+    "Android 14, locked"
+   ],
+   "c": 2,
+   "e": "RT40S ships on Android 13 with GMS/AER and a stated path to Android 17 — important for 4–5 year deployments.",
    "brand": "Urovo"
   },
   {
-   "q": "Before pitching Urovo to an enterprise Zebra account, what must the team validate per model?",
+   "scenario": "A hospital uses Zebra ZD510 wristband printers and ZQ610 mobile printers on the wards.",
+   "q": "What's the right approach before you quote?",
    "o": [
-    "Only the colour options",
-    "Android LTS/patch cadence and accessory parity (cradles, gun grip, vehicle mount)",
-    "The shipping carrier",
-    "Nothing — all models are identical"
+    "Map ZD510 to the Bixolon healthcare equivalent (confirm exact model with product team) and ZQ610 to the Urovo SP319/SP409, but pre-qualify the ZPL/SDK requirement first",
+    "Quote both immediately as straight drop-ins",
+    "Tell them no replacement exists",
+    "Replace the wristband printer with a Datalogic scanner"
    ],
-   "c": 1,
-   "e": "Enterprise buyers challenge Android version, patch cadence and accessory ecosystem. Validate LTS and accessory parity per model first.",
-   "brand": "Urovo"
-  },
-  {
-   "q": "A customer running Zebra TC52 / TC57 mid-tier handhelds for retail and warehouse picking should be quoted which Urovo model?",
-   "o": [
-    "RT40 only",
-    "DT50",
-    "P8100H tablet",
-    "K329 printer"
-   ],
-   "c": 1,
-   "e": "DT50 covers the TC52/57/58 mid-tier and adds mPOS credibility (Dreamtec deployment).",
-   "brand": "Urovo"
+   "c": 0,
+   "e": "The ZD510 maps to a Bixolon healthcare equivalent that must be confirmed with the product team, and the ZQ610 maps to a Urovo mobile printer where ZPL needs SDK work — both carry caveats to resolve before quoting.",
+   "brand": "Zebra"
   }
  ]
 }
