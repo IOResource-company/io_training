@@ -1,44 +1,44 @@
 {
- "d": 20666,
+ "d": 20667,
  "mode": "study",
- "brand": "Honeywell",
- "date": "Saturday 1 August 2026",
+ "brand": "Aures",
+ "date": "Sunday 2 August 2026",
  "questions": [
   {
-   "q": "Which Honeywell family is the ultra-rugged, IP65 industrial scanner for warehouse and manufacturing?",
+   "q": "Where is Aures hardware designed / what group now owns the brand?",
    "o": [
-    "Orbit",
-    "Granit",
-    "Eclipse",
-    "Genesis"
+    "Designed in Korea, owned by Posbank",
+    "Designed in France, now part of Advantech",
+    "Designed in the USA, owned by NCR",
+    "Designed in China, owned by Honeywell"
    ],
    "c": 1,
-   "e": "Granit (e.g. 1990i/1991i) is IP65-sealed, drop-rated and reads damaged/dirty labels; the XR variant adds extended range.",
-   "brand": "Honeywell"
+   "e": "Aures is French-designed (made in France for some lines like Kwartz) and is now Advantech-Aures, part of the global Advantech group.",
+   "brand": "Aures"
   },
   {
-   "q": "For IO Resource, what does the Honeywell brand almost entirely consist of?",
+   "q": "What is IO Resource's single best-selling Aures product by revenue?",
    "o": [
-    "Label printers",
-    "Barcode scanners (and some mobile computers)",
-    "Tablets and rugged laptops",
-    "Receipt printers and cash drawers"
+    "Sango 15\" terminal",
+    "Komet 27\" kiosk",
+    "Yuno II 15.6\" (i3 Tiger Lake)",
+    "ODP 333 receipt printer"
    ],
-   "c": 1,
-   "e": "IOR's Honeywell business is ~100% barcode scanners, with a small amount of mobile-computer and accessory volume.",
-   "brand": "Honeywell"
+   "c": 2,
+   "e": "The Yuno II 15.6\" Tiger Lake i3 is ~80% of all IOR Aures revenue (~694 units). Lead with it.",
+   "brand": "Aures"
   },
   {
-   "q": "What type of scanner is the Honeywell Orbit (MS7120 / 7190g)?",
+   "q": "A customer has an ageing TRX-3000 estate. What is IOR's recommended path?",
    "o": [
-    "Ultra-rugged handheld",
-    "Hands-free presentation scanner",
-    "Wearable ring scanner",
-    "Fixed industrial laser tunnel"
+    "Keep buying TRX-3000 indefinitely",
+    "Switch to NCR enterprise",
+    "Migrate to Yuno II as the direct successor",
+    "Move everything to Android tablets"
    ],
-   "c": 1,
-   "e": "The Orbit is a hands-free presentation scanner for fixed-position checkouts; the 7190g is the modern 1D/2D hybrid.",
-   "brand": "Honeywell"
+   "c": 2,
+   "e": "TRX-3000 is legacy with thinning parts availability. Yuno II is the same family with current CPUs, NVMe and Windows 11 IoT — the easy upgrade.",
+   "brand": "Aures"
   }
  ]
 }
