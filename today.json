@@ -1,44 +1,44 @@
 {
- "d": 20667,
+ "d": 20668,
  "mode": "study",
- "brand": "Aures",
- "date": "Sunday 2 August 2026",
+ "brand": "Datalogic",
+ "date": "Monday 3 August 2026",
  "questions": [
   {
-   "q": "Where is Aures hardware designed / what group now owns the brand?",
+   "q": "How does the Datalogic Magellan trigger compared with the Zebra DS9308 at the till?",
    "o": [
-    "Designed in Korea, owned by Posbank",
-    "Designed in France, now part of Advantech",
-    "Designed in the USA, owned by NCR",
-    "Designed in China, owned by Honeywell"
+    "Both need a button press",
+    "Datalogic's proximity sensor triggers as you approach; the Zebra needs a deliberate present-and-hold",
+    "The Zebra triggers faster",
+    "Neither supports auto-trigger"
    ],
    "c": 1,
-   "e": "Aures is French-designed (made in France for some lines like Kwartz) and is now Advantech-Aures, part of the global Advantech group.",
-   "brand": "Aures"
+   "e": "Bench-test point 1: Datalogic's sensitive proximity sensor triggers as you approach, while the Zebra typically needs present-and-hold.",
+   "brand": "Datalogic"
   },
   {
-   "q": "What is IO Resource's single best-selling Aures product by revenue?",
+   "q": "How do you change settings on a Datalogic Magellan at the counter?",
    "o": [
-    "Sango 15\" terminal",
-    "Komet 27\" kiosk",
-    "Yuno II 15.6\" (i3 Tiger Lake)",
-    "ODP 333 receipt printer"
+    "Only via the 123Scan Windows utility",
+    "On the device — hold 2 sec for volume, 4 sec for factory reset",
+    "By emailing Datalogic support",
+    "It cannot be reconfigured once deployed"
    ],
-   "c": 2,
-   "e": "The Yuno II 15.6\" Tiger Lake i3 is ~80% of all IOR Aures revenue (~694 units). Lead with it.",
-   "brand": "Aures"
+   "c": 1,
+   "e": "Bench-test point 3: Datalogic configures on-device. Zebra requires the 123Scan Windows utility, admin rights and a USB cable.",
+   "brand": "Datalogic"
   },
   {
-   "q": "A customer has an ageing TRX-3000 estate. What is IOR's recommended path?",
+   "q": "What is the default carriage-return behaviour out of the box?",
    "o": [
-    "Keep buying TRX-3000 indefinitely",
-    "Switch to NCR enterprise",
-    "Migrate to Yuno II as the direct successor",
-    "Move everything to Android tablets"
+    "Off on Datalogic, on with Zebra",
+    "On with Datalogic; every Zebra customer asks how to enable it",
+    "Off on both",
+    "On with both"
    ],
-   "c": 2,
-   "e": "TRX-3000 is legacy with thinning parts availability. Yuno II is the same family with current CPUs, NVMe and Windows 11 IoT — the easy upgrade.",
-   "brand": "Aures"
+   "c": 1,
+   "e": "Bench-test point 4: Datalogic ships with carriage return enabled by default; Zebra customers routinely have to ask how to turn it on.",
+   "brand": "Datalogic"
   }
  ]
 }
