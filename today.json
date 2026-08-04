@@ -1,44 +1,44 @@
 {
- "d": 20668,
+ "d": 20669,
  "mode": "study",
- "brand": "Datalogic",
- "date": "Monday 3 August 2026",
+ "brand": "Toshiba",
+ "date": "Tuesday 4 August 2026",
  "questions": [
   {
-   "q": "How does the Datalogic Magellan trigger compared with the Zebra DS9308 at the till?",
+   "q": "Why is migrating from a Zebra to a BV420D low-risk for the customer?",
    "o": [
-    "Both need a button press",
-    "Datalogic's proximity sensor triggers as you approach; the Zebra needs a deliberate present-and-hold",
-    "The Zebra triggers faster",
-    "Neither supports auto-trigger"
+    "Toshiba sends a free technician",
+    "ZPL II emulation means existing label templates and BarTender workflow carry across",
+    "The BV420D auto-imports Zebra firmware",
+    "Zebra and Toshiba use identical part numbers"
    ],
    "c": 1,
-   "e": "Bench-test point 1: Datalogic's sensitive proximity sensor triggers as you approach, while the Zebra typically needs present-and-hold.",
-   "brand": "Datalogic"
+   "e": "ZPL II emulation plus the same BarTender design workflow makes it a driver reinstall and config step, not a workflow rebuild.",
+   "brand": "Toshiba"
   },
   {
-   "q": "How do you change settings on a Datalogic Magellan at the counter?",
+   "q": "What is the BV420D's max direct-thermal print speed at 203 dpi?",
    "o": [
-    "Only via the 123Scan Windows utility",
-    "On the device — hold 2 sec for volume, 4 sec for factory reset",
-    "By emailing Datalogic support",
-    "It cannot be reconfigured once deployed"
+    "4 ips",
+    "6 ips",
+    "7 ips",
+    "10 ips"
    ],
-   "c": 1,
-   "e": "Bench-test point 3: Datalogic configures on-device. Zebra requires the 123Scan Windows utility, admin rights and a USB cable.",
-   "brand": "Datalogic"
+   "c": 2,
+   "e": "The BV420D runs 7 ips at 203 dpi versus the Zebra ZD421's 6 ips — about 17% faster.",
+   "brand": "Toshiba"
   },
   {
-   "q": "What is the default carriage-return behaviour out of the box?",
+   "q": "Which interface ships as standard on the BV420D but is a paid option on the Zebra ZD421?",
    "o": [
-    "Off on Datalogic, on with Zebra",
-    "On with Datalogic; every Zebra customer asks how to enable it",
-    "Off on both",
-    "On with both"
+    "USB",
+    "10/100 Ethernet",
+    "Bluetooth",
+    "Serial"
    ],
    "c": 1,
-   "e": "Bench-test point 4: Datalogic ships with carriage return enabled by default; Zebra customers routinely have to ask how to turn it on.",
-   "brand": "Datalogic"
+   "e": "Every BV420D includes USB plus 10/100 Ethernet as standard; on the ZD421 Ethernet is a paid extra.",
+   "brand": "Toshiba"
   }
  ]
 }
