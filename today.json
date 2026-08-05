@@ -1,44 +1,56 @@
 {
- "d": 20669,
+ "d": 20670,
  "mode": "study",
- "brand": "Toshiba",
- "date": "Tuesday 4 August 2026",
+ "brand": "Bixolon",
+ "date": "Wednesday 5 August 2026",
  "questions": [
   {
-   "q": "Why is migrating from a Zebra to a BV420D low-risk for the customer?",
+   "q": "Which Bixolon model should NOT be positioned as the ZD421 displacement product?",
    "o": [
-    "Toshiba sends a free technician",
-    "ZPL II emulation means existing label templates and BarTender workflow carry across",
-    "The BV420D auto-imports Zebra firmware",
-    "Zebra and Toshiba use identical part numbers"
+    "XD3-40 (entry-level value option)",
+    "XD5-40d",
+    "XD5-40t",
+    "XD5-40tR"
    ],
-   "c": 1,
-   "e": "ZPL II emulation plus the same BarTender design workflow makes it a driver reinstall and config step, not a workflow rebuild.",
-   "brand": "Toshiba"
+   "c": 0,
+   "e": "The XD3-40 shares the printhead/motors but is lower spec with a single feed button — position it as a value option, not the displacement product.",
+   "brand": "Bixolon"
   },
   {
-   "q": "What is the BV420D's max direct-thermal print speed at 203 dpi?",
+   "q": "How does the XD5-40d's direct-thermal speed at 203 dpi compare to the Zebra ZD421?",
    "o": [
-    "4 ips",
-    "6 ips",
-    "7 ips",
-    "10 ips"
+    "About 17% faster (~7 ips vs ~6 ips)",
+    "Identical at 6 ips",
+    "Slower at 4 ips",
+    "Twice as fast at 12 ips"
    ],
-   "c": 2,
-   "e": "The BV420D runs 7 ips at 203 dpi versus the Zebra ZD421's 6 ips — about 17% faster.",
-   "brand": "Toshiba"
+   "c": 0,
+   "e": "The XD5-40d tops out at ~7 ips (178 mm/s) DT vs the ZD421's ~6 ips (152 mm/s) — roughly 17% more throughput per shift.",
+   "brand": "Bixolon"
   },
   {
-   "q": "Which interface ships as standard on the BV420D but is a paid option on the Zebra ZD421?",
+   "q": "When should a rep lead with Bixolon for a ZD421 displacement?",
    "o": [
-    "USB",
-    "10/100 Ethernet",
-    "Bluetooth",
-    "Serial"
+    "On every deal — it's the default; Toshiba is quoted only on explicit customer request or an existing Toshiba estate",
+    "Only where aggressive price drives the deal",
+    "Only where the software prints direct-to-port ZPL",
+    "Never — Toshiba is always preferred"
+   ],
+   "c": 0,
+   "e": "Bixolon is the primary and the default on all displacement and new business. Toshiba enters only when the customer specifically requests it or a Toshiba estate / service-network requirement applies.",
+   "brand": "Bixolon"
+  },
+  {
+   "q": "What is the first question to ask before quoting a Bixolon replacement for a Zebra label printer?",
+   "o": [
+    "What is their budget",
+    "Whether their software prints through the Windows driver or sends ZPL direct to the port",
+    "How many labels a day",
+    "Which colour they prefer"
    ],
    "c": 1,
-   "e": "Every BV420D includes USB plus 10/100 Ethernet as standard; on the ZD421 Ethernet is a paid extra.",
-   "brand": "Toshiba"
+   "e": "The print path decides the deployment. Windows-driver estates need a driver reinstall and default-printer change; direct-to-port ZPL estates like Intact Xline are proven zero-config drop-ins because the printer auto-senses ZPL.",
+   "brand": "Bixolon"
   }
  ]
 }
