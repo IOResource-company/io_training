@@ -1,56 +1,56 @@
 {
- "d": 20670,
+ "d": 20671,
  "mode": "study",
- "brand": "Bixolon",
- "date": "Wednesday 5 August 2026",
+ "brand": "Zebra",
+ "date": "Thursday 6 August 2026",
  "questions": [
   {
-   "q": "Which Bixolon model should NOT be positioned as the ZD421 displacement product?",
+   "q": "A customer runs Zebra ZD421d 4-inch desktop label printers and wants the lowest delivered price. Which replacement leads?",
    "o": [
-    "XD3-40 (entry-level value option)",
-    "XD5-40d",
-    "XD5-40t",
-    "XD5-40tR"
+    "Bixolon XD5-40",
+    "Toshiba BV420D",
+    "Urovo DT40",
+    "Datalogic Magellan 1500i"
    ],
    "c": 0,
-   "e": "The XD3-40 shares the printhead/motors but is lower spec with a single feed button — position it as a value option, not the displacement product.",
-   "brand": "Bixolon"
+   "e": "The Bixolon XD5-40 is the default ZD421d replacement on all displacement and new business. Toshiba BV420D is quoted only on explicit customer request or where an existing Toshiba estate applies.",
+   "brand": "Zebra"
   },
   {
-   "q": "How does the XD5-40d's direct-thermal speed at 203 dpi compare to the Zebra ZD421?",
+   "q": "A customer has Zebra TC26 handhelds and needs integrated cellular. What does IOR offer?",
    "o": [
-    "About 17% faster (~7 ips vs ~6 ips)",
-    "Identical at 6 ips",
-    "Slower at 4 ips",
-    "Twice as fast at 12 ips"
+    "Urovo DT40 4G / RT40 4G",
+    "Urovo DT50",
+    "Datalogic Magellan 900i",
+    "Bixolon XD5-40"
    ],
    "c": 0,
-   "e": "The XD5-40d tops out at ~7 ips (178 mm/s) DT vs the ZD421's ~6 ips (152 mm/s) — roughly 17% more throughput per shift.",
-   "brand": "Bixolon"
+   "e": "The TC26/27 (cellular-capable tier) maps to the Urovo DT40 4G or RT40 4G.",
+   "brand": "Zebra"
   },
   {
-   "q": "When should a rep lead with Bixolon for a ZD421 displacement?",
+   "q": "A customer runs Zebra MC3300x keypad warehouse units. What does IOR replace them with?",
    "o": [
-    "On every deal — it's the default; Toshiba is quoted only on explicit customer request or an existing Toshiba estate",
-    "Only where aggressive price drives the deal",
-    "Only where the software prints direct-to-port ZPL",
-    "Never — Toshiba is always preferred"
+    "Urovo DT40 + gun grip / RT40",
+    "Urovo DT50",
+    "Datalogic Magellan 1500i",
+    "Toshiba BV420D"
    ],
    "c": 0,
-   "e": "Bixolon is the primary and the default on all displacement and new business. Toshiba enters only when the customer specifically requests it or a Toshiba estate / service-network requirement applies.",
-   "brand": "Bixolon"
+   "e": "The pistol-grip MC3300/MC3300x maps to the Urovo DT40 with gun grip, or the RT40.",
+   "brand": "Zebra"
   },
   {
-   "q": "What is the first question to ask before quoting a Bixolon replacement for a Zebra label printer?",
+   "q": "Zebra DS9308 to Datalogic, ZD421 to Bixolon — what replaces a Zebra TC or MC handheld computer?",
    "o": [
-    "What is their budget",
-    "Whether their software prints through the Windows driver or sends ZPL direct to the port",
-    "How many labels a day",
-    "Which colour they prefer"
+    "Datalogic Magellan",
+    "Urovo",
+    "Bixolon XD5-40",
+    "Toshiba BV420D"
    ],
    "c": 1,
-   "e": "The print path decides the deployment. Windows-driver estates need a driver reinstall and default-printer change; direct-to-port ZPL estates like Intact Xline are proven zero-config drop-ins because the printer auto-senses ZPL.",
-   "brand": "Bixolon"
+   "e": "Urovo is the handheld pillar of the displacement strategy and IOR's primary replacement for Zebra TC and MC mobile computers.",
+   "brand": "Zebra"
   }
  ]
 }
