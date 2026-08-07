@@ -1,56 +1,140 @@
 {
- "d": 20671,
- "mode": "study",
- "brand": "Zebra",
- "date": "Thursday 6 August 2026",
+ "d": 20672,
+ "mode": "exam",
+ "date": "Friday 7 August 2026",
  "questions": [
   {
-   "q": "A customer runs Zebra ZD421d 4-inch desktop label printers and wants the lowest delivered price. Which replacement leads?",
+   "q": "Which Datalogic scanner is the lead replacement for the Zebra DS9308?",
    "o": [
-    "Bixolon XD5-40",
-    "Toshiba BV420D",
-    "Urovo DT40",
-    "Datalogic Magellan 1500i"
-   ],
-   "c": 0,
-   "e": "The Bixolon XD5-40 is the default ZD421d replacement on all displacement and new business. Toshiba BV420D is quoted only on explicit customer request or where an existing Toshiba estate applies.",
-   "brand": "Zebra"
-  },
-  {
-   "q": "A customer has Zebra TC26 handhelds and needs integrated cellular. What does IOR offer?",
-   "o": [
-    "Urovo DT40 4G / RT40 4G",
-    "Urovo DT50",
-    "Datalogic Magellan 900i",
-    "Bixolon XD5-40"
-   ],
-   "c": 0,
-   "e": "The TC26/27 (cellular-capable tier) maps to the Urovo DT40 4G or RT40 4G.",
-   "brand": "Zebra"
-  },
-  {
-   "q": "A customer runs Zebra MC3300x keypad warehouse units. What does IOR replace them with?",
-   "o": [
-    "Urovo DT40 + gun grip / RT40",
-    "Urovo DT50",
-    "Datalogic Magellan 1500i",
-    "Toshiba BV420D"
-   ],
-   "c": 0,
-   "e": "The pistol-grip MC3300/MC3300x maps to the Urovo DT40 with gun grip, or the RT40.",
-   "brand": "Zebra"
-  },
-  {
-   "q": "Zebra DS9308 to Datalogic, ZD421 to Bixolon — what replaces a Zebra TC or MC handheld computer?",
-   "o": [
-    "Datalogic Magellan",
-    "Urovo",
-    "Bixolon XD5-40",
-    "Toshiba BV420D"
+    "Magellan 1500i",
+    "Magellan 900i",
+    "QuickScan QD2500",
+    "PowerScan"
    ],
    "c": 1,
-   "e": "Urovo is the handheld pillar of the displacement strategy and IOR's primary replacement for Zebra TC and MC mobile computers.",
+   "e": "The Magellan 900i is the lead presentation scanner and IOR's like-for-like DS9308 replacement — what we stock and demo.",
+   "brand": "Datalogic"
+  },
+  {
+   "q": "What screen sizes does the Posbank BigPos kiosk come in?",
+   "o": [
+    "10.1\" and 15\"",
+    "15.6\" and 21.5\"",
+    "21.5\" and 27\"",
+    "27\" and 32\""
+   ],
+   "c": 2,
+   "e": "BigPos is offered in 21.5\" and 27\". (The Mazic K kiosk is the 15.6\"/21.5\" line.)",
+   "brand": "Posbank"
+  },
+  {
+   "q": "Which two Honeywell SKUs are IOR's biggest earners, together over half of Honeywell revenue?",
+   "o": [
+    "Granit 1991i and Xenon 1950g",
+    "Voyager XP 1472g cordless 2D and Orbit MS7120 presentation",
+    "Eclipse MS5145 and HF680",
+    "Voyager 1200g and Voyager 1202g"
+   ],
+   "c": 1,
+   "e": "The 1472g cordless 2D kit (~£50k) and the MS7120 Orbit presentation scanner (~£50k) are neck-and-neck at the top.",
+   "brand": "Honeywell"
+  },
+  {
+   "q": "Which interface ships as standard on the BV420D but is a paid option on the Zebra ZD421?",
+   "o": [
+    "USB",
+    "10/100 Ethernet",
+    "Bluetooth",
+    "Serial"
+   ],
+   "c": 1,
+   "e": "Every BV420D includes USB plus 10/100 Ethernet as standard; on the ZD421 Ethernet is a paid extra.",
+   "brand": "Toshiba"
+  },
+  {
+   "q": "Which set of interfaces does Datalogic offer that Zebra does not match?",
+   "o": [
+    "USB only",
+    "USB-HID, serial, and virtual serial COM",
+    "Wi-Fi and Bluetooth only",
+    "Thunderbolt and HDMI"
+   ],
+   "c": 1,
+   "e": "Bench-test point 5: Datalogic supports USB-HID, serial and virtual serial COM; Zebra is USB or serial only.",
+   "brand": "Datalogic"
+  },
+  {
+   "q": "A customer's retail counter has a Zebra DS9308 presentation scanner. What does IOR transition them to?",
+   "o": [
+    "Datalogic Magellan 900i",
+    "Urovo DT50",
+    "Bixolon XD5-40",
+    "Toshiba BV420D"
+   ],
+   "c": 0,
+   "e": "The DS9308 is IOR's single biggest displacement target. The standard replacement is the Datalogic Magellan 900i, with the Magellan 1500i as the premium step-up.",
    "brand": "Zebra"
+  },
+  {
+   "q": "The Zebra ZD421 has more standard memory than the BV420D. When does that actually matter?",
+   "o": [
+    "For every retail deployment",
+    "Only for very large on-device font libraries or extensive stored label formats",
+    "When printing in colour",
+    "For Ethernet connectivity"
+   ],
+   "c": 1,
+   "e": "The extra memory only matters for large Unicode font sets or many stored formats; standard retail, logistics and healthcare labelling never approaches the BV420D's limits.",
+   "brand": "Toshiba"
+  },
+  {
+   "q": "Which best-attach accessory shows up most in Posbank sales volume?",
+   "o": [
+    "External graphics card",
+    "Second/customer display and MSR",
+    "Barcode label rolls",
+    "Network switch"
+   ],
+   "c": 1,
+   "e": "The 10\" 2nd LCD and the MSR sell in high volume as attachments to Apexa terminals.",
+   "brand": "Posbank"
+  },
+  {
+   "q": "Which of these Honeywell scanners can read a barcode off a phone screen?",
+   "o": [
+    "Voyager 1200g",
+    "Orbit MS7120",
+    "Eclipse MS5145",
+    "Orbit 7190g"
+   ],
+   "c": 3,
+   "e": "The 7190g is the hybrid 1D/2D presentation scanner. The 1200g, MS7120 and Eclipse are single-line lasers and physically cannot read screens — no setting changes that.",
+   "brand": "Honeywell"
+  },
+  {
+   "q": "A PCAP touch screen is registering presses nobody made. What are the three usual causes?",
+   "o": [
+    "Worn touch layer, wrong driver, old firmware",
+    "Moisture on the glass, a grounding problem, or the touch-controller cable",
+    "Screen burn, dead pixels, backlight failure",
+    "Windows updates, antivirus, disk space"
+   ],
+   "c": 1,
+   "e": "Ghost touch on PCAP is nearly always liquid on the glass (including a wet cloth or condensation), poor earthing in the supply or mounting, or a damaged or misseated controller cable — not a failing panel.",
+   "brand": "Aures"
+  },
+  {
+   "scenario": "A multi-site café chain is rolling out iPad-based cloud POS and wants a small, wireless receipt printer beside each tablet, with cabling kept to a minimum.",
+   "q": "Which Epson model do you lead with?",
+   "o": [
+    "TM-T88VII",
+    "TM-m30III",
+    "TM-U220",
+    "TM-P20II"
+   ],
+   "c": 1,
+   "e": "The TM-m30III is built for tablet/cloud POS: USB-C power/tethering over one cable, integrated Bluetooth/Wi-Fi, tiny footprint, ePOS-Print for cloud apps.",
+   "brand": "Epson"
   }
  ]
 }
